@@ -19,6 +19,8 @@ import AllRoutineList from "./pages/AllRoutineList";
 import AllTeacherList from "./pages/AllTeacherList";
 import AddAcademicInfo from "./Component/AddAcademicInfo";
 import MyAcademicInfo from "./Component/MyAcademicInfo";
+import Unauthorized from "./pages/Unauthorized";
+import RoleBasedRoute from "./Component/RoleBasedRoute";
 
 function App() {
   return (
@@ -32,6 +34,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/all-teacher-list" element={<AllTeacherList />} />
         <Route path="/all-routine-list" element={<AllRoutineList />} />
+        <Route path="/unauthorized" element={<Unauthorized />} />
            
         {/* Protected Dashboard & Nested Routes */}
         <Route
@@ -44,15 +47,72 @@ function App() {
         >
           {/* Nested inside /dashboard */}
           <Route index element={<DashboardHome />} />
-          <Route path="add-teacher" element={<AddTeacher />} />
-          <Route path="teachers" element={<TeacherList />} />
-          <Route path="edit-teacher/:id" element={<EditTeacher />} />
-          <Route path="add-routine" element={<AddRoutine />} />
-          <Route path="routines" element={<RoutineList />} />
-          <Route path="edit-routine/:id" element={<EditRoutine />} />
+          <Route path="add-teacher"  
+            element={
+              <RoleBasedRoute allowedRoles={["teacher"]}>
+                <AddTeacher />
+              </RoleBasedRoute>
+            } />
+          <Route path="teachers" 
+            element={
+              <RoleBasedRoute allowedRoles={["teacher"]}>
+                <TeacherList />
+              </RoleBasedRoute>} />
+         
+          <Route
+            path="edit-teacher/:id"
+            element={
+              <RoleBasedRoute allowedRoles={["teacher"]}>
+                <EditTeacher />
+              </RoleBasedRoute>
+            }
+          />
+          <Route
+            path="routines"
+            element={
+              <RoleBasedRoute allowedRoles={["teacher"]}>
+                <RoutineList />
+              </RoleBasedRoute>
+            }
+          />
+
+      <Route
+            path="add-routine"
+            element={
+              <RoleBasedRoute allowedRoles={["teacher"]}>
+                <AddRoutine />
+              </RoleBasedRoute>
+            }
+          />
+          <Route
+            path="edit-routine/:id"
+            element={
+              <RoleBasedRoute allowedRoles={["teacher"]}>
+                <EditRoutine />
+              </RoleBasedRoute>
+            }
+          />
+
           {/* student info  */}
-          <Route path="add-academic-info" element={<AddAcademicInfo />} />
-          <Route path="my-academic-info" element={<MyAcademicInfo />} />
+
+           <Route
+            path="add-academic-info"
+            element={
+              <RoleBasedRoute allowedRoles={["student"]}>
+                <AddAcademicInfo />
+              </RoleBasedRoute>
+            }
+          />
+          <Route
+            path="my-academic-info"
+            element={
+              <RoleBasedRoute allowedRoles={["student"]}>
+                <MyAcademicInfo />
+              </RoleBasedRoute>
+            }
+          />
+
+        
           
         </Route>
 
