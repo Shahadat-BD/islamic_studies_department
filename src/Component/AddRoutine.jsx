@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const AddRoutine = () => {
   const [formData, setFormData] = useState({
@@ -9,7 +10,7 @@ const AddRoutine = () => {
     room: '',
     slots: Array(6).fill({ time: '', subjectSymbol: '', subjectName: '', teacher: '' }),
   });
-
+ const navigate = useNavigate()
   const years = [
     'Honours 1st Year',
     'Honours 2nd Year',
@@ -42,7 +43,7 @@ const AddRoutine = () => {
         slots: Array(6).fill({ time: '', subjectSymbol: '', subjectName: '', teacher: '' }),
       });
     alert('Routine added successfully!');
-    
+    navigate("/dashboard/routines")
     } catch (err) {
       alert('Failed to add routine.');
       console.error(err);

@@ -23,7 +23,7 @@ const AddTeacher = () => {
     e.preventDefault();
     try {
       await axios.post('http://localhost:5000/api/teachers', formData);
-      navigate('/teachers');
+      navigate('/dashboard/teachers');
     } catch (err) {
       console.error(err);
     }

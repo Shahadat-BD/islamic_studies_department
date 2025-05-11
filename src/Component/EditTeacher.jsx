@@ -31,7 +31,7 @@ const EditTeacher = () => {
     e.preventDefault();
     try {
       await axios.put(`http://localhost:5000/api/teachers/${id}`, formData);
-      navigate('/teachers');
+      navigate('/dashboard/teachers');
     } catch (err) {
       console.error(err);
     }

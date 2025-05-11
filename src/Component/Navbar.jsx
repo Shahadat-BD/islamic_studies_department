@@ -25,16 +25,10 @@ const Navbar = () => {
           <Link to="/" className="hover:text-yellow-400">Home</Link>
         </li>
         <li>
-          <Link to="/add-teacher" className="hover:text-yellow-400">Add Teacher</Link>
+          <Link to="/all-teacher-list" className="hover:text-yellow-400">Teachers List</Link>
         </li>
         <li>
-          <Link to="/add-routine" className="hover:text-yellow-400">Add Routine</Link>
-        </li>
-        <li>
-          <Link to="/teachers" className="hover:text-yellow-400">Teachers</Link>
-        </li>
-        <li>
-          <Link to="/routines" className="hover:text-yellow-400">Routines</Link>
+          <Link to="/all-routine-list" className="hover:text-yellow-400">Routine list</Link>
         </li>
         {user ? (
           <>
@@ -43,6 +37,7 @@ const Navbar = () => {
             </li>
             <li className="text-sm">
               {user.email}
+              
             </li>
             <li>
               <button

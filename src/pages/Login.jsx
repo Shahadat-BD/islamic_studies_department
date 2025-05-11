@@ -16,7 +16,7 @@ const Login = () => {
     login(email, password)
       .then((res) => {
         console.log("Logged in:", res.user);
-        navigate("/");
+        navigate("/dashboard");
       })
       .catch((err) => {
         console.error(err);

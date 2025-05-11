@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 
-const TeacherList = () => {
+const AllTeacherList = () => {
   const [teachers, setTeachers] = useState([]);
 
   const fetchTeachers = async () => {
@@ -10,12 +9,6 @@ const TeacherList = () => {
     setTeachers(res.data);
   };
 
-  const handleDelete = async (id) => {
-    if (confirm('Are you sure?')) {
-      await axios.delete(`http://localhost:5000/api/teachers/${id}`);
-      fetchTeachers();
-    }
-  };
 
   useEffect(() => {
     fetchTeachers();
@@ -34,10 +27,6 @@ const TeacherList = () => {
               <p>{teacher.email} | {teacher.phone}</p>
               <p>Department: {teacher.department}</p>
             </div>
-            <div className="space-x-2">
-              <Link to={`/dashboard/edit-teacher/${teacher._id}`} className="text-blue-500">Edit</Link>
-              <button onClick={() => handleDelete(teacher._id)} className="text-red-500">Delete</button>
-            </div>
           </div>
         ))}
       </div>
@@ -45,4 +34,4 @@ const TeacherList = () => {
   );
 };
 
-export default TeacherList;
+export default AllTeacherList;

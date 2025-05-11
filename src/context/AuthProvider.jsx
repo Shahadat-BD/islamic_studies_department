@@ -4,7 +4,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
-  getAuth
+  getAuth,
 } from "firebase/auth";
 import app from "../firebase/firebase.init";
 
@@ -36,16 +36,44 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
-  // Track User State
+  // Track Firebase User + fetch MongoDB data
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      if (currentUser) {
+        try {
+          const res = await fetch(
+            `http://localhost:5000/users/${currentUser.email}`
+          );
+          const data = await res.json();
+
+          setUser({
+            uid: currentUser.uid,
+            email: currentUser.email,
+            role: data.role || "student", // default role if missing
+            name: data.name || "No Name",
+            photoURL: data.photo || "",
+            mongoId: data._id || "",
+          });
+        } catch (err) {
+          console.error("Error fetching user from MongoDB:", err);
+          setUser(currentUser); // fallback
+        }
+      } else {
+        setUser(null);
+      }
       setLoading(false);
     });
+
     return () => unsubscribe();
   }, []);
 
-  const authInfo = { user, loading, register, login, logout };
+  const authInfo = {
+    user,
+    loading,
+    register,
+    login,
+    logout,
+  };
 
   return (
     <AuthContext.Provider value={authInfo}>

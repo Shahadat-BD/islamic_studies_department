@@ -1,15 +1,12 @@
-import {  useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 
-const RoutineList = () => {
+const AllRoutineList = () => {
   const [routines, setRoutines] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [selectedYear, setSelectedYear] = useState('Honours 1st Year'); // ✅ Default value
   const [dayFilter, setDayFilter] = useState("Sunday"); // default value
    
-
-
 
   const years = [
     'Honours 1st Year',
@@ -25,27 +22,12 @@ const RoutineList = () => {
         });
     }, []);
 
- 
-    const fetchAllRoutines = async () => {
-        const res = await axios.get('http://localhost:5000/api/routines');
-         setRoutines(res.data);
-    };
-
-
-
   useEffect(() => {
     const result = routines.filter((item) => item.year === selectedYear && item.day === dayFilter);
     setFiltered(result);
   }, [selectedYear, routines, dayFilter]);
 
 
-  const handleDeleteRoutine = async (id) => {
-    if (confirm('Are you sure?')) {
-      await axios.delete(`http://localhost:5000/api/routines/${id}`);
-       fetchAllRoutines();
-    }
-  };
-   
 
 
   return (
@@ -93,15 +75,7 @@ const RoutineList = () => {
           >
             <div className="mb-2 font-semibold text-lg flex justify-between">
               <p>📚 {routine.year} - {routine.day}</p>
-                    <Link
-                      to={`/dashboard/edit-routine/${routine._id}`}
-                      className="text-blue-600 hover:underline"
-                    >
-                      ✏️Routine Edit
-                    </Link>
-
-                    <button className='bg-red-500 px-2  rounded-md text-white ' onClick={() => handleDeleteRoutine(`${routine._id}`)}>Delete Routine</button>
-              
+        
             </div>
             <div className="text-sm mb-2 text-gray-700">
               🏫 Department: {routine.department} | 🏠 Room: {routine.room}
@@ -135,4 +109,4 @@ const RoutineList = () => {
   );
 };
 
-export default RoutineList;
+export default AllRoutineList;

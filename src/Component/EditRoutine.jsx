@@ -28,7 +28,7 @@ const EditRoutine = () => {
     try {
       await axios.put(`http://localhost:5000/api/routines/${id}`, formData);
       alert('Routine updated!');
-      navigate('/routines');
+      navigate('/dashboard/routines');
     } catch (err) {
       alert('Update failed!');
       console.error(err);
