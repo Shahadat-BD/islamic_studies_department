@@ -1,12 +1,13 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';;
 
 const AddRoutine = () => {
   const [formData, setFormData] = useState({
     department: '',
     year: '',
     day: '',
+    RoutineCreated : "",
     room: '',
     slots: Array(6).fill({ time: '', subjectSymbol: '', subjectName: '', teacher: '' }),
   });
@@ -38,6 +39,7 @@ const AddRoutine = () => {
       setFormData({
         department: '',
         year: '',
+        RoutineCreated :"",
         day: '',
         room: '',
         slots: Array(6).fill({ time: '', subjectSymbol: '', subjectName: '', teacher: '' }),
@@ -65,7 +67,15 @@ const AddRoutine = () => {
           className="w-full border p-2 rounded"
           required
         />
-
+        <input
+          type="text"
+          name="RoutineCreated"
+          placeholder="Routine creator name"
+          value={formData.RoutineCreated}
+          onChange={handleChange}
+          className="w-full border p-2 rounded"
+          required
+        />
         {/* Year & Day */}
         <div className="flex gap-4">
           <select

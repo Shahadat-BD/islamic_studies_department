@@ -39,7 +39,7 @@ const TeacherList = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-4">
-      <h2 className="text-xl font-semibold mb-4">All Teachers</h2>
+      <h2 className="text-xl font-semibold mb-4">Teacher Information</h2>
       <div className="grid gap-4">
         {teachers.map((teacher) => (
           <div key={teacher._id} className="border p-4 rounded shadow flex gap-4">
@@ -50,12 +50,12 @@ const TeacherList = () => {
               <p>{teacher.email} | {teacher.phone}</p>
               <p>Department: {teacher.department}</p>
             </div>
-            {user?.role !== 'teacher' && (
+            {user.role === 'teacher' ? (
               <div className="space-x-2">
                 <Link to={`/dashboard/edit-teacher/${teacher._id}`} className="text-blue-500">Edit</Link>
                 <button onClick={() => handleDelete(teacher._id)} className="text-red-500">Delete</button>
               </div>
-            )}
+            ) : ""}
           </div>
         ))}
       </div>

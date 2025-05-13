@@ -9,7 +9,7 @@ const DashboardLayout = () => {
    if (loading) {
     return <div className="p-4">Loading...</div>;
   } 
-  
+
   const isTeacher = user?.role === "teacher";
   const isStudent = user?.role === "student";
 
@@ -24,7 +24,7 @@ const DashboardLayout = () => {
         {isTeacher && (
           <>
             <NavLink to="add-teacher" className="block">➕ Add Teacher</NavLink>
-            <NavLink to="teachers" className="block">👥 Teacher List</NavLink>
+            <NavLink to="teachers" className="block">👥 Teacher Info</NavLink>
             <NavLink to="add-routine" className="block">➕ Add Routine</NavLink>
             <NavLink to="routines" className="block">🗓️ Routine List</NavLink>
             <NavLink to="all-students" className="block">🎓 All Students Info</NavLink>

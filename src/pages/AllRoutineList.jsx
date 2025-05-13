@@ -75,7 +75,7 @@ const AllRoutineList = () => {
           >
             <div className="mb-2 font-semibold text-lg flex justify-between">
               <p>📚 {routine.year} - {routine.day}</p>
-        
+              <p>Routine Created <span className='text-red-400'>{routine.RoutineCreated}</span></p>
             </div>
             <div className="text-sm mb-2 text-gray-700">
               🏫 Department: {routine.department} | 🏠 Room: {routine.room}

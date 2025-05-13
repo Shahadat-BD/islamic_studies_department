@@ -1,9 +1,11 @@
 
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import { AuthContext } from '../context/AuthProvider';
 
 const EditTeacher = () => {
+  const {user} = useContext(AuthContext)
   const [formData, setFormData] = useState({
     name: '',
     designation: '',
@@ -51,6 +53,7 @@ const EditTeacher = () => {
             placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
             className="w-full border p-2 rounded"
             required
+            readOnly={field === 'email'} 
           />
         ))}
         <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded">
