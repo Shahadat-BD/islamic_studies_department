@@ -4,11 +4,17 @@ import { AuthContext } from "../context/AuthProvider";
 import { Link, NavLink, Outlet } from "react-router-dom";
 
 const DashboardLayout = () => {
-  const { user } = useContext(AuthContext);
+  const { user ,loading} = useContext(AuthContext);
 
+   if (loading) {
+    return <div className="p-4">Loading...</div>;
+  } 
+  
   const isTeacher = user?.role === "teacher";
   const isStudent = user?.role === "student";
 
+ 
+  
   return (
     <div className="flex min-h-screen">
       {/* Sidebar */}

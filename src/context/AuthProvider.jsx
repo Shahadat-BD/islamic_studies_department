@@ -36,31 +36,39 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
-  // Track Firebase User + fetch MongoDB data
+  // Track Firebase User + fetch MongoDB user with retry logic
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser) {
-        try {
-          const res = await fetch(
-            `http://localhost:5000/users/${currentUser.email}`
-          );
-          const data = await res.json();
+        let attempts = 0;
+        let data = null;
 
-          setUser({
-            uid: currentUser.uid,
-            email: currentUser.email,
-            role: data.role || "student", // default role if missing
-            name: data.name || "No Name",
-            photoURL: data.photo || "",
-            mongoId: data._id || "",
-          });
-        } catch (err) {
-          console.error("Error fetching user from MongoDB:", err);
-          setUser(currentUser); // fallback
+        while (attempts < 5) {
+          try {
+            const res = await fetch(`http://localhost:5000/users/${currentUser.email}`);
+            data = await res.json();
+
+            if (data?.role) break;
+          } catch (err) {
+            console.error("Retrying user fetch...", err);
+          }
+
+          await new Promise((resolve) => setTimeout(resolve, 500)); // wait 0.5s
+          attempts++;
         }
+
+        setUser({
+          uid: currentUser.uid,
+          email: currentUser.email,
+          role: data?.role || "student",
+          name: data?.name || "No Name",
+          photoURL: data?.photo || "",
+          mongoId: data?._id || "",
+        });
       } else {
         setUser(null);
       }
+
       setLoading(false);
     });
 

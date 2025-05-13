@@ -1,11 +1,10 @@
-// pages/Register.jsx
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../context/AuthProvider";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 const Register = () => {
-  const { register } = useContext(AuthContext);
+  const { register, user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -15,6 +14,12 @@ const Register = () => {
     password: "",
     image: ""
   });
+
+  useEffect(() => {
+    if (user) {
+      navigate("/dashboard");
+    }
+  }, [user, navigate]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,12 +33,11 @@ const Register = () => {
       const userCredential = await register(email, password);
       const user = userCredential.user;
 
-      // MongoDB Save
       const saveUser = {
         name,
         email,
         image,
-        role: "student" // default
+        role: "student"
       };
 
       await fetch("http://localhost:5000/users", {
@@ -42,9 +46,11 @@ const Register = () => {
         body: JSON.stringify(saveUser)
       });
 
+      toast.success("Registration successful!");
       navigate("/dashboard");
     } catch (err) {
       console.error("Registration error", err);
+      toast.error(err.message);
     }
   };
 

@@ -1,13 +1,29 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../context/AuthProvider';
 
 const TeacherList = () => {
   const [teachers, setTeachers] = useState([]);
-
+  const { user } = useContext(AuthContext);
+  console.log(user.email);
+  
   const fetchTeachers = async () => {
-    const res = await axios.get('http://localhost:5000/api/teachers');
-    setTeachers(res.data);
+    if (!user) return;
+
+    try {
+      if (user.role === 'teacher') {
+        // 🔐 Only fetch the logged-in teacher's info
+        const res = await axios.get(`http://localhost:5000/api/teachers/me/${user.email}`);
+        setTeachers([res.data]); // set as array for consistency
+      } else {
+        // 🔓 Admin, student, etc. can see all teachers
+        const res = await axios.get('http://localhost:5000/api/teachers');
+        setTeachers(res.data);
+      }
+    } catch (err) {
+      console.error('Failed to fetch teachers:', err);
+    }
   };
 
   const handleDelete = async (id) => {
@@ -19,7 +35,7 @@ const TeacherList = () => {
 
   useEffect(() => {
     fetchTeachers();
-  }, []);
+  }, [user]);
 
   return (
     <div className="max-w-4xl mx-auto p-4">
@@ -34,10 +50,12 @@ const TeacherList = () => {
               <p>{teacher.email} | {teacher.phone}</p>
               <p>Department: {teacher.department}</p>
             </div>
-            <div className="space-x-2">
-              <Link to={`/dashboard/edit-teacher/${teacher._id}`} className="text-blue-500">Edit</Link>
-              <button onClick={() => handleDelete(teacher._id)} className="text-red-500">Delete</button>
-            </div>
+            {user?.role !== 'teacher' && (
+              <div className="space-x-2">
+                <Link to={`/dashboard/edit-teacher/${teacher._id}`} className="text-blue-500">Edit</Link>
+                <button onClick={() => handleDelete(teacher._id)} className="text-red-500">Delete</button>
+              </div>
+            )}
           </div>
         ))}
       </div>

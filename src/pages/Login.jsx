@@ -1,27 +1,33 @@
-// src/pages/Login.jsx
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
+import { toast } from "react-hot-toast";
 
 const Login = () => {
-  const { login } = useContext(AuthContext);
+  const { login, user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
-  const handleLogin = (e) => {
+  useEffect(() => {
+    if (user) {
+      navigate("/dashboard");
+    }
+  }, [user, navigate]);
+
+  const handleLogin = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    login(email, password)
-      .then((res) => {
-        console.log("Logged in:", res.user);
-        navigate("/dashboard");
-      })
-      .catch((err) => {
-        console.error(err);
-        setError(err.message);
-      });
+    try {
+      const res = await login(email, password);
+      toast.success("Login successful!");
+      navigate("/dashboard");
+    } catch (err) {
+      console.error(err);
+      toast.error(err.message);
+      setError(err.message);
+    }
   };
 
   return (
