@@ -21,6 +21,7 @@ import AddAcademicInfo from "./Component/AddAcademicInfo";
 import MyAcademicInfo from "./Component/MyAcademicInfo";
 import Unauthorized from "./pages/Unauthorized";
 import RoleBasedRoute from "./Component/RoleBasedRoute";
+import AllUserInfo from "./Component/AllUserInfo";
 
 function App() {
   return (
@@ -89,6 +90,14 @@ function App() {
             element={
               <RoleBasedRoute allowedRoles={["teacher"]}>
                 <EditRoutine />
+              </RoleBasedRoute>
+            }
+          />
+          <Route
+            path="all-user"
+            element={
+              <RoleBasedRoute allowedRoles={["teacher"]}>
+                <AllUserInfo />
               </RoleBasedRoute>
             }
           />
