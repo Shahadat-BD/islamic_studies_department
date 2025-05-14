@@ -23,6 +23,8 @@ import RoleBasedRoute from "./Component/RoleBasedRoute";
 import AllUserInfo from "./Component/AllUserInfo";
 import GetAllStudentInfo from "./Component/GetAllStudentInfo";
 import DashboardHome from "./pages/Dashboard/DashboardHome";
+import AddNotice from "./Component/AddNotice";
+import ShowNotice from "./pages/showNotice";
 
 function App() {
   return (
@@ -37,6 +39,7 @@ function App() {
         <Route path="/all-teacher-list" element={<AllTeacherList />} />
         <Route path="/all-routine-list" element={<AllRoutineList />} />
         <Route path="/unauthorized" element={<Unauthorized />} />
+        <Route path="/show-notice" element={<ShowNotice />} />
            
         {/* Protected Dashboard & Nested Routes */}
         <Route
@@ -83,6 +86,14 @@ function App() {
             element={
               <RoleBasedRoute allowedRoles={["teacher"]}>
                 <AddRoutine />
+              </RoleBasedRoute>
+            }
+          />
+      <Route
+            path="add-notice"
+            element={
+              <RoleBasedRoute allowedRoles={["teacher"]}>
+                <AddNotice />
               </RoleBasedRoute>
             }
           />

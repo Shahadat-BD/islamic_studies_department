@@ -24,9 +24,10 @@ const DashboardLayout = () => {
         {isTeacher && (
           <>
             <NavLink to="add-teacher" className="block">➕ Add Teacher</NavLink>
-            <NavLink to="teachers" className="block">👥 Teacher Info</NavLink>
             <NavLink to="add-routine" className="block">➕ Add Routine</NavLink>
+            <NavLink to="add-notice" className="block">➕ Add Notice</NavLink>
             <NavLink to="routines" className="block">🗓️ Routine List</NavLink>
+            <NavLink to="teachers" className="block">👥 Teacher Info</NavLink>
             <NavLink to="all-students" className="block">🎓 All Students Info</NavLink>
             <NavLink to="all-user" className="block">👤 All User Info</NavLink>
           </>

@@ -30,6 +30,9 @@ const Navbar = () => {
         <li>
           <Link to="/all-routine-list" className="hover:text-yellow-400">Routine list</Link>
         </li>
+        <li>
+          <Link to="/show-notice" className="hover:text-yellow-400">Notice list</Link>
+        </li>
         {user ? (
           <>
             <li>
