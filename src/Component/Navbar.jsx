@@ -5,7 +5,7 @@ import { AuthContext } from "../context/AuthProvider";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
-
+  
   const handleLogout = async () => {
     try {
       await logout();
@@ -37,6 +37,10 @@ const Navbar = () => {
             </li>
             <li className="text-sm">
               {user.email}
+              
+            </li>
+            <li className="text-sm">
+             <img className="h-16 w-16 rounded-full" src={user.photoURL} alt="" srcset="" />
               
             </li>
             <li>

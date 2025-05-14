@@ -62,7 +62,7 @@ const AuthProvider = ({ children }) => {
           email: currentUser.email,
           role: data?.role || "student",
           name: data?.name || "No Name",
-          photoURL: data?.photo || "",
+          photoURL: data?.image || "",
           mongoId: data?._id || "",
         });
       } else {

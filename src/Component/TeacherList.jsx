@@ -58,6 +58,7 @@ const TeacherList = () => {
             ) : ""}
           </div>
         ))}
+        <span className='text-red-500 font-bold text-lg'>{teachers.length === 0 && 'please added your Information in "AddTeacher" from.'}</span>
       </div>
     </div>
   );

@@ -14,7 +14,6 @@ import EditTeacher from "./Component/EditTeacher";
 import RoutineList from "./pages/routineList";
 import AddRoutine from "./Component/AddRoutine";
 import EditRoutine from "./Component/EditRoutine";
-import DashboardHome from "./pages/dashboard/DashboardHome"; 
 import AllRoutineList from "./pages/AllRoutineList";
 import AllTeacherList from "./pages/AllTeacherList";
 import AddAcademicInfo from "./Component/AddAcademicInfo";
@@ -22,6 +21,8 @@ import MyAcademicInfo from "./Component/MyAcademicInfo";
 import Unauthorized from "./pages/Unauthorized";
 import RoleBasedRoute from "./Component/RoleBasedRoute";
 import AllUserInfo from "./Component/AllUserInfo";
+import GetAllStudentInfo from "./Component/GetAllStudentInfo";
+import DashboardHome from "./pages/Dashboard/DashboardHome";
 
 function App() {
   return (
@@ -98,6 +99,15 @@ function App() {
             element={
               <RoleBasedRoute allowedRoles={["teacher"]}>
                 <AllUserInfo />
+              </RoleBasedRoute>
+            }
+          />
+
+          <Route
+            path="all-students"
+            element={
+              <RoleBasedRoute allowedRoles={["teacher"]}>
+                <GetAllStudentInfo/>
               </RoleBasedRoute>
             }
           />
