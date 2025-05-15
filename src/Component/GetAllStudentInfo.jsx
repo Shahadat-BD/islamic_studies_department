@@ -72,7 +72,6 @@ const GetAllStudentInfo = () => {
             <tr className="bg-gray-200">
               <th className="border p-2">#</th>
               <th className="border p-2">Name</th>
-              <th className="border p-2">Email</th>
               <th className="border p-2">Class Roll</th>
               <th className="border p-2">Reg. No</th>
               <th className="border p-2">Mobile</th>
@@ -85,7 +84,6 @@ const GetAllStudentInfo = () => {
               <tr key={info._id}>
                 <td className="border p-2">{(page - 1) * limit + index + 1}</td>
                 <td className="border p-2">{info.name}</td>
-                <td className="border p-2">{info.email}</td>
                 <td className="border p-2">{info.classRoll}</td>
                 <td className="border p-2">{info.registrationNumber}</td>
                 <td className="border p-2">{info.mobileNumber}</td>

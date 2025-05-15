@@ -25,6 +25,9 @@ import GetAllStudentInfo from "./Component/GetAllStudentInfo";
 import DashboardHome from "./pages/Dashboard/DashboardHome";
 import AddNotice from "./Component/AddNotice";
 import ShowNotice from "./pages/showNotice";
+import TeacherNoticeShow from "./pages/teacherNoticeShow";
+import AddResultForm from "./Component/AddResultForm";
+import MyResult from "./Component/MyResult";
 
 function App() {
   return (
@@ -122,6 +125,22 @@ function App() {
               </RoleBasedRoute>
             }
           />
+          <Route
+            path="teacher-notice-show"
+            element={
+              <RoleBasedRoute allowedRoles={["teacher"]}>
+                <TeacherNoticeShow/>
+              </RoleBasedRoute>
+            }
+          />
+          <Route
+            path="add-result-form"
+            element={
+              <RoleBasedRoute allowedRoles={["teacher"]}>
+                <AddResultForm/>
+              </RoleBasedRoute>
+            }
+          />
 
           {/* student info  */}
 
@@ -138,6 +157,14 @@ function App() {
             element={
               <RoleBasedRoute allowedRoles={["student"]}>
                 <MyAcademicInfo />
+              </RoleBasedRoute>
+            }
+          />
+          <Route
+            path="my-result"
+            element={
+              <RoleBasedRoute allowedRoles={["student"]}>
+                <MyResult />
               </RoleBasedRoute>
             }
           />

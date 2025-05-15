@@ -26,6 +26,8 @@ const DashboardLayout = () => {
             <NavLink to="add-teacher" className="block">➕ Add Teacher</NavLink>
             <NavLink to="add-routine" className="block">➕ Add Routine</NavLink>
             <NavLink to="add-notice" className="block">➕ Add Notice</NavLink>
+            <NavLink to="add-result-form" className="block">➕ Add Result Form</NavLink>
+            <NavLink to="teacher-notice-show" className="block"> 👁️ Notice show</NavLink>
             <NavLink to="routines" className="block">🗓️ Routine List</NavLink>
             <NavLink to="teachers" className="block">👥 Teacher Info</NavLink>
             <NavLink to="all-students" className="block">🎓 All Students Info</NavLink>
@@ -37,6 +39,7 @@ const DashboardLayout = () => {
           <>
             <NavLink to="add-academic-info" className="block">📄 Add Academic Info</NavLink>
             <NavLink to="my-academic-info" className="block">📚 Show your Academic Info</NavLink>
+            <NavLink to="my-result" className="block">📚 My Result</NavLink>
           </>
         )}
 

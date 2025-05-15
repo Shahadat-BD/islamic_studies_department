@@ -69,7 +69,6 @@ const AllUserInfo = () => {
               <th className="p-2 border">#</th>
               <th className="p-2 border">Photo</th>
               <th className="p-2 border">Name</th>
-              <th className="p-2 border">Email</th>
               <th className="p-2 border">Role</th>
             </tr>
           </thead>
@@ -85,7 +84,6 @@ const AllUserInfo = () => {
                   />
                 </td>
                 <td className="p-2 border">{user.name}</td>
-                <td className="p-2 border">{user.email}</td>
                 <td className="p-2 border">
                   <select
                     value={user.role}
