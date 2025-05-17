@@ -28,6 +28,9 @@ const Navbar = () => {
           <Link to="/all-teacher-list" className="hover:text-yellow-400">Teachers List</Link>
         </li>
         <li>
+          <Link to="/my-result" className="hover:text-yellow-400">My Result check</Link>
+        </li>
+        <li>
           <Link to="/all-routine-list" className="hover:text-yellow-400">Routine list</Link>
         </li>
         <li>

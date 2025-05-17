@@ -43,6 +43,7 @@ function App() {
         <Route path="/all-routine-list" element={<AllRoutineList />} />
         <Route path="/unauthorized" element={<Unauthorized />} />
         <Route path="/show-notice" element={<ShowNotice />} />
+        <Route path="/my-result" element={<MyResult />} />
            
         {/* Protected Dashboard & Nested Routes */}
         <Route
@@ -160,14 +161,14 @@ function App() {
               </RoleBasedRoute>
             }
           />
-          <Route
+          {/* <Route
             path="my-result"
             element={
               <RoleBasedRoute allowedRoles={["student"]}>
                 <MyResult />
               </RoleBasedRoute>
             }
-          />
+          /> */}
 
         
           
