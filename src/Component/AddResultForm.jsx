@@ -6,13 +6,12 @@ export default function AddResultForm() {
     studentName: '',
     registrationNumber: '',
     classRoll: '',
-    department: '',
+    department: 'Arabic & Islamic Studies', // Default value
     year: '',
     examType: '',
     results: [{ subject: '', subjectCode: '', marks: '', gpa: '' }]
   });
 
-  // GPA calculator function
   const calculateGPA = (marks) => {
     if (marks >= 80) return 4.00;
     if (marks >= 75) return 3.75;
@@ -34,14 +33,9 @@ export default function AddResultForm() {
       const updatedSubjects = [...formData.results];
       updatedSubjects[index][name] = value;
 
-      // GPA auto calculate based on marks
       if (name === 'marks') {
         const numericMarks = parseFloat(value);
-        if (!isNaN(numericMarks)) {
-          updatedSubjects[index].gpa = calculateGPA(numericMarks);
-        } else {
-          updatedSubjects[index].gpa = '';
-        }
+        updatedSubjects[index].gpa = !isNaN(numericMarks) ? calculateGPA(numericMarks) : '';
       }
 
       setFormData({ ...formData, results: updatedSubjects });
@@ -74,28 +68,93 @@ export default function AddResultForm() {
       <h2 className="text-2xl font-bold text-gray-700 border-b pb-2 mb-4">Student Result Submission</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* Student Info Inputs */}
-        {[
-          { label: 'Student Name', name: 'studentName' },
-          { label: 'Registration Number', name: 'registrationNumber' },
-          { label: 'Class Roll', name: 'classRoll' },
-          { label: 'Department', name: 'department' },
-          { label: 'Year', name: 'year' },
-          { label: 'Exam Type', name: 'examType' }
-        ].map(({ label, name }) => (
-          <div key={name}>
-            <label className="block text-sm font-medium text-gray-600 mb-1">{label}</label>
-            <input
-              type="text"
-              name={name}
-              onChange={handleChange}
-              required
-              className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-        ))}
+        {/* Student Name */}
+        <div>
+          <label className="block text-sm font-medium text-gray-600 mb-1">Student Name</label>
+          <input
+            type="text"
+            name="studentName"
+            onChange={handleChange}
+            required
+            className="w-full border rounded px-3 py-2"
+          />
+        </div>
+
+        {/* Registration Number */}
+        <div>
+          <label className="block text-sm font-medium text-gray-600 mb-1">Registration Number</label>
+          <input
+            type="text"
+            name="registrationNumber"
+            onChange={handleChange}
+            required
+            className="w-full border rounded px-3 py-2"
+          />
+        </div>
+
+        {/* Class Roll */}
+        <div>
+          <label className="block text-sm font-medium text-gray-600 mb-1">Class Roll</label>
+          <input
+            type="text"
+            name="classRoll"
+            onChange={handleChange}
+            required
+            className="w-full border rounded px-3 py-2"
+          />
+        </div>
+
+        {/* Department Dropdown */}
+        <div>
+          <label className="block text-sm font-medium text-gray-600 mb-1">Department</label>
+          <select
+            name="department"
+            value={formData.department}
+            onChange={handleChange}
+            required
+            className="w-full border rounded px-3 py-2"
+          >
+            <option value="Arabic & Islamic Studies">Arabic & Islamic Studies</option>
+          </select>
+        </div>
+
+        {/* Year Dropdown */}
+        <div>
+          <label className="block text-sm font-medium text-gray-600 mb-1">Year</label>
+          <select
+            name="year"
+            value={formData.year}
+            onChange={handleChange}
+            required
+            className="w-full border rounded px-3 py-2"
+          >
+            <option value="">Select Year</option>
+            <option value="Honours 1st Year">Honours 1st Year</option>
+            <option value="Honours 2nd Year">Honours 2nd Year</option>
+            <option value="Honours 3rd Year">Honours 3rd Year</option>
+            <option value="Honours 4th Year">Honours 4th Year</option>
+            <option value="Master's">Master's</option>
+          </select>
+        </div>
+
+        {/* Exam Type Dropdown */}
+        <div>
+          <label className="block text-sm font-medium text-gray-600 mb-1">Exam Type</label>
+          <select
+            name="examType"
+            value={formData.examType}
+            onChange={handleChange}
+            required
+            className="w-full border rounded px-3 py-2"
+          >
+            <option value="">Select Exam Type</option>
+            <option value="Assessment Test">Assessment Test</option>
+            <option value="In Course">In Course</option>
+          </select>
+        </div>
       </div>
 
+      {/* Subject Inputs */}
       <div>
         <h3 className="text-xl font-semibold text-gray-700 mt-6 mb-2">Subjects</h3>
 
@@ -106,7 +165,6 @@ export default function AddResultForm() {
               <input
                 type="text"
                 name="subject"
-                placeholder="Subject"
                 value={subj.subject}
                 onChange={(e) => handleChange(e, i)}
                 required
@@ -118,7 +176,6 @@ export default function AddResultForm() {
               <input
                 type="text"
                 name="subjectCode"
-                placeholder="Code"
                 value={subj.subjectCode}
                 onChange={(e) => handleChange(e, i)}
                 required
@@ -130,7 +187,6 @@ export default function AddResultForm() {
               <input
                 type="number"
                 name="marks"
-                placeholder="Marks"
                 value={subj.marks}
                 onChange={(e) => handleChange(e, i)}
                 required
@@ -142,7 +198,6 @@ export default function AddResultForm() {
               <input
                 type="number"
                 name="gpa"
-                placeholder="GPA"
                 value={subj.gpa}
                 readOnly
                 className="w-full border rounded px-3 py-2 bg-gray-100 cursor-not-allowed"

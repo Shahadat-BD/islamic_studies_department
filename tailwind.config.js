@@ -5,8 +5,15 @@ content: [
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        bangla: ['"Hind Siliguri"', 'sans-serif'],
+        english: ['"Inter"', 'sans-serif'],
+      },
+    },
   },
-  plugins: [],
+  plugins: [
+    require('daisyui')
+  ],
 }
 

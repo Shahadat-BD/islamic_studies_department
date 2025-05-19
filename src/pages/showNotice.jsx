@@ -18,9 +18,9 @@ const ShowNotice = () => {
       });
   }, []);
 
-  if (loading) return <p className="text-center mt-10">Loading notices...</p>;
+  if (loading) return <p className="text-center pt-32">Loading notices...</p>;
 
-  if (notices.length === 0) return <p className="text-center mt-10">No notices found.</p>;
+  if (notices.length === 0) return <p className="text-center pt-32">No notices found.</p>;
 
 
 const sortedNotices = [...notices].sort((a, b) => {
@@ -32,7 +32,7 @@ const sortedNotices = [...notices].sort((a, b) => {
 
 
   return (
-    <div className="max-w-6xl mx-auto p-4">
+    <div className="max-w-6xl mx-auto p-4 pt-24 font-english">
     <h2 className="text-2xl font-bold mb-4 text-center">All Notices</h2>
    
   <div className="overflow-x-auto">

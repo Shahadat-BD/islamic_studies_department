@@ -111,7 +111,7 @@ const handleDownloadPDF = async () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-8">
+    <div className="max-w-3xl mx-auto px-4 pb-8 lg:pt-32 pt-24 font-english">
       {!result ? (
         <div className="bg-white shadow-md rounded-lg p-6">
           <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">🎓 Student Result Portal</h2>
@@ -192,7 +192,7 @@ const handleDownloadPDF = async () => {
 
           <div className="mt-4 space-y-1">
             <p><strong>📊 Total Marks:</strong> {result.totalMarks}</p>
-            <p><strong>🎯 Average CGPA:</strong> {(result.averageGpa || 0).toFixed(2)} / 4.00</p>
+            <p><strong>🎯 Average CGPA:</strong> {(result.averageGpa || 0).toFixed(2)} out of 4.00</p>
             <p><strong>🏅 Grade:</strong> {result.averageGrade}</p>
            </div>
 
