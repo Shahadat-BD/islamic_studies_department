@@ -28,7 +28,7 @@ const DashboardLayout = () => {
       <aside
         className={`bg-blue-900 text-white w-64 p-4 space-y-4 md:block ${
           sidebarOpen ? "block" : "hidden"
-        }  fixed md:static z-50`}
+        } `}
       >
         <h2 className="text-xl font-bold mb-6 hidden md:block">Dashboard</h2>
 

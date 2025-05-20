@@ -1,9 +1,21 @@
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
+
 const AcademicHighlights = () => {
+
+useEffect(() => {
+  AOS.init({
+    duration: 1000,
+    once: true,
+  });
+}, []);
+
   return (
     <section className="bg-white py-16 px-4 md:px-12 lg:px-20 font-bangla text-center">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-14" data-aos="fade-down">
           <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
             📚 একাডেমিক হাইলাইটস
           </h2>
@@ -14,7 +26,6 @@ const AcademicHighlights = () => {
 
         {/* Grid of Highlights */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Card Item */}
           {[
             {
               icon: "🕋",
@@ -60,6 +71,8 @@ const AcademicHighlights = () => {
             <div
               key={index}
               className="bg-gray-50 rounded-xl shadow-md hover:shadow-xl transition duration-300 p-6 border-b-4 border-blue-500"
+              data-aos="fade-up"
+              data-aos-delay={index * 100} // stagger animation
             >
               <div className="text-3xl mb-3">{item.icon}</div>
               <h3 className="text-xl font-semibold text-blue-800 mb-2">{item.title}</h3>

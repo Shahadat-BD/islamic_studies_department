@@ -30,6 +30,9 @@ import AddResultForm from "./Component/AddResultForm";
 import MyResult from "./Component/MyResult";
 
 function App() {
+
+
+
   return (
     <>
       <Navbar />
