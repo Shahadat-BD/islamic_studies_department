@@ -15,7 +15,7 @@ const DashboardLayout = () => {
   const isStudent = user?.role === "student";
 
   return (
-    <div className="flex min-h-screen flex-col md:flex-row pt-20">
+    <div className="flex min-h-screen flex-col md:flex-row pt-[78px]">
       {/* Top Bar for Mobile */}
       <div className="flex justify-between items-center p-4 bg-blue-900 text-white md:hidden">
         <h2 className="text-lg font-bold">Dashboard</h2>
@@ -28,7 +28,7 @@ const DashboardLayout = () => {
       <aside
         className={`bg-blue-900 text-white w-64 p-4 space-y-4 md:block ${
           sidebarOpen ? "block" : "hidden"
-        } md:relative fixed md:static z-50`}
+        }  fixed md:static z-50`}
       >
         <h2 className="text-xl font-bold mb-6 hidden md:block">Dashboard</h2>
 
