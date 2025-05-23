@@ -44,7 +44,7 @@ const RecentNotices = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-2">
             📢 সাম্প্রতিক নোটিশ
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
             সর্বশেষ ৩টি গুরুত্বপূর্ণ নোটিশ নিচে টেবিল আকারে দেখানো হলো।
           </p>
         </div>
@@ -86,14 +86,15 @@ const RecentNotices = () => {
         </div>
 
         {/* View All Button */}
-        <div className="text-center mt-8" data-aos="fade-up">
-          <a
-            href="/show-notice"
-            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
-          >
-            সকল নোটিশ দেখুন
-          </a>
-        </div>
+         <div className="mt-8 text-center" data-aos="fade-up">
+        <a
+          href="/show-notice"
+          className="inline-block px-6 py-3 bg-blue-700 text-white rounded-full shadow hover:bg-blue-800 transition"
+        >
+           📢 সকল নোটিশ দেখুন
+        </a>
+      </div>
+
       </div>
     </section>
   );

@@ -50,12 +50,14 @@ const handleSubmit = async (e) => {
 
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-xl mt-8">
-  <h2 className="text-2xl font-bold text-gray-800 mb-2 text-center">
+    <div className="max-w-2xl mx-auto  bg-white shadow-lg rounded-xl mt-8 font-english">
+ <div className='bg-blue-900 text-white rounded-t-xl py-2'>
+   <h2 className="text-2xl font-bold mb-2 text-center">
     Submit Your Information as a Teacher
   </h2>
+ </div>
 
-  <form onSubmit={handleSubmit} className="space-y-5">
+  <form onSubmit={handleSubmit} className="space-y-5 p-6">
     {/* Name */}
     <div>
       <label className="block text-sm font-medium text-gray-700 mb-1">

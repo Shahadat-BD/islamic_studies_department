@@ -35,89 +35,114 @@ const EditRoutine = () => {
     }
   };
 
-  if (!formData) return <div>Loading...</div>;
+  if (!formData) return <div className="text-center py-10 text-gray-600">Loading...</div>;
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      <h2 className="text-2xl font-bold mb-4">Edit Routine</h2>
-      <form onSubmit={handleUpdate} className="space-y-4">
+    <div className="max-w-4xl mx-auto px-4 pb-4 pt-0">
+      <h2 className="text-3xl font-bold text-center text-blue-800 mb-6">✏️ Edit Class Routine</h2>
 
-        <input
-          type="text"
-          name="department"
-          placeholder='department'
-          value={formData.department}
-          onChange={handleChange}
-          className="w-full border p-2 rounded"
-        />
+      <form onSubmit={handleUpdate} className="bg-white p-6 rounded-xl shadow-md space-y-6 border border-gray-200">
 
-        <div className="flex gap-4">
+        {/* Department */}
+        <div>
+          <label className="block mb-1 text-sm font-medium text-gray-700">Department</label>
           <input
             type="text"
-            name="year"
-            placeholder='year'
-            value={formData.year}
+            name="department"
+            value={formData.department}
             onChange={handleChange}
-            className="border p-2 rounded w-1/2"
-          />
-          <input
-            type="text"
-            name="day"
-            placeholder='day'
-            value={formData.day}
-            onChange={handleChange}
-            className="border p-2 rounded w-1/2"
+            placeholder="e.g., Islamic Studies"
+            className="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
-        <input
-          type="text"
-          name="room"
-          value={formData.room}
-          onChange={handleChange}
-          className="w-full border p-2 rounded"
-        />
-
-        <h3 className="font-semibold text-lg mt-6 mb-2">Routine Slots</h3>
-        {formData.slots.map((slot, index) => (
-          <div key={index} className="grid grid-cols-4 gap-2 mb-2">
+        {/* Year and Day */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label className="block mb-1 text-sm font-medium text-gray-700">Year</label>
             <input
               type="text"
-              value={slot.time}
-              onChange={(e) => handleSlotChange(index, 'time', e.target.value)}
-              className="border p-2 rounded"
-              placeholder='time'
-            />
-            <input
-              type="text"
-              value={slot.subjectSymbol}
-              onChange={(e) => handleSlotChange(index, 'subjectSymbol', e.target.value)}
-              className="border p-2 rounded"
-              placeholder='subject code'
-            />
-            <input
-              type="text"
-              value={slot.subjectName}
-              onChange={(e) => handleSlotChange(index, 'subjectName', e.target.value)}
-              className="border p-2 rounded"
-              placeholder='subject Name'
-            />
-            <input
-              type="text"
-              value={slot.teacher}
-              onChange={(e) => handleSlotChange(index, 'teacher', e.target.value)}
-              className="border p-2 rounded"
-              placeholder='teacher name'
+              name="year"
+              value={formData.year}
+              onChange={handleChange}
+              placeholder="e.g., 2nd Year"
+              className="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
-        ))}
+          <div>
+            <label className="block mb-1 text-sm font-medium text-gray-700">Day</label>
+            <input
+              type="text"
+              name="day"
+              value={formData.day}
+              onChange={handleChange}
+              placeholder="e.g., Monday"
+              className="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+        </div>
 
-        <button
-          type="submit"
-          className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
-        >
-          Update Routine
-        </button>
+        {/* Room */}
+        <div>
+          <label className="block mb-1 text-sm font-medium text-gray-700">Room No.</label>
+          <input
+            type="text"
+            name="room"
+            value={formData.room}
+            onChange={handleChange}
+            placeholder="e.g., 301"
+            className="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        {/* Routine Slots */}
+        <div>
+          <h3 className="text-lg font-semibold text-gray-800 mb-2">📚 Routine Slots</h3>
+          <div className="space-y-4">
+            {formData.slots.map((slot, index) => (
+              <div key={index} className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <input
+                  type="text"
+                  value={slot.time}
+                  onChange={(e) => handleSlotChange(index, 'time', e.target.value)}
+                  placeholder="Time (e.g., 9:00-9:50)"
+                  className="border p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <input
+                  type="text"
+                  value={slot.subjectSymbol}
+                  onChange={(e) => handleSlotChange(index, 'subjectSymbol', e.target.value)}
+                  placeholder="Subject Code"
+                  className="border p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <input
+                  type="text"
+                  value={slot.subjectName}
+                  onChange={(e) => handleSlotChange(index, 'subjectName', e.target.value)}
+                  placeholder="Subject Name"
+                  className="border p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <input
+                  type="text"
+                  value={slot.teacher}
+                  onChange={(e) => handleSlotChange(index, 'teacher', e.target.value)}
+                  placeholder="Teacher Name"
+                  className="border p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Submit Button */}
+        <div className="text-center">
+          <button
+            type="submit"
+            className="bg-blue-600 w-full text-white px-6 py-2 rounded hover:bg-green-700 transition duration-200"
+          >
+            ✅ Update Routine
+          </button>
+        </div>
       </form>
     </div>
   );

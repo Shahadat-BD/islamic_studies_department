@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../context/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
 const Register = () => {
@@ -55,51 +55,70 @@ const Register = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-4 border rounded">
-      <h2 className="text-xl font-bold mb-4">Register</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white p-8 rounded shadow-md w-96 space-y-4"
+      >
+        <h2 className="text-2xl font-semibold text-center">Register</h2>
+
         <input
           type="text"
           name="name"
           required
           placeholder="Full Name"
-          className="w-full border p-2"
+          className="w-full px-4 py-2 border rounded"
           onChange={handleChange}
         />
+
         <input
           type="email"
           name="email"
           required
           placeholder="Email"
-          className="w-full border p-2"
+          className="w-full px-4 py-2 border rounded"
           onChange={handleChange}
         />
+
         <div className="relative">
           <input
             type={showPassword ? "text" : "password"}
             name="password"
             required
             placeholder="Password"
-            className="w-full border p-2 pr-10"
+            className="w-full px-4 py-2 border rounded pr-10"
             onChange={handleChange}
           />
-          <span
+          <button
+            type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute top-2 right-2 cursor-pointer"
+            className="absolute right-2 top-2 text-sm text-blue-600"
           >
-            {showPassword ? "👁️" : "🙈"}
-          </span>
+            {showPassword ? "Hide" : "Show"}
+          </button>
         </div>
+
         <input
           type="text"
           name="image"
           placeholder="Profile Image URL"
-          className="w-full border p-2"
+          className="w-full px-4 py-2 border rounded"
           onChange={handleChange}
         />
-        <button type="submit" className="w-full bg-blue-500 text-white p-2">
+
+        <button
+          type="submit"
+          className="bg-blue-600 text-white px-4 py-2 rounded w-full"
+        >
           Register
         </button>
+
+        <p className="text-center text-sm mt-2">
+          Already registered?{" "}
+          <Link to="/login" className="text-blue-600 hover:underline">
+            Please login
+          </Link>
+        </p>
       </form>
     </div>
   );

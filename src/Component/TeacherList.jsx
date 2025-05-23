@@ -38,29 +38,65 @@ const TeacherList = () => {
   }, [user]);
 
   return (
-    <div className="max-w-4xl mx-auto p-4">
-      <h2 className="text-xl font-semibold mb-4">Teacher Information</h2>
-      <div className="grid gap-4">
-        {teachers.map((teacher) => (
-          <div key={teacher._id} className="border p-4 rounded shadow flex gap-4">
-            <img src={teacher.image} alt={teacher.name} className="w-20 h-20 object-cover rounded" />
-            <div className="flex-1">
-              <h3 className="font-bold text-lg">{teacher.name}</h3>
-              <p>{teacher.designation}</p>
-              <p>{teacher.email} | {teacher.phone}</p>
-              <p>Department: {teacher.department}</p>
-            </div>
-            {user.role === 'teacher' ? (
-              <div className="space-x-2">
-                <Link to={`/dashboard/edit-teacher/${teacher._id}`} className="text-blue-500">Edit</Link>
-                <button onClick={() => handleDelete(teacher._id)} className="text-red-500">Delete</button>
-              </div>
-            ) : ""}
+    <div className="max-w-4xl mx-auto px-4 py-4 font-english">
+  <h2 className="text-2xl font-bold text-gray-800 mb-14 text-center border-b pb-2">
+    Teacher Information
+  </h2>
+
+  <div className="grid gap-6">
+    {teachers.map((teacher) => (
+      <div
+        key={teacher._id}
+        className="bg-white p-6 rounded-xl shadow-md border border-gray-200 hover:shadow-lg transition duration-200 text-center relative"
+      >
+        {/* Teacher Image */}
+        <img
+          src={teacher.image}
+          alt={teacher.name}
+          className="w-28 h-28 object-cover rounded-full mx-auto border-4 border-gray-200 -mt-16 mb-4 shadow"
+        />
+
+        {/* Teacher Info */}
+        <h3 className="text-xl font-bold text-gray-800">{teacher.name}</h3>
+        <p className="text-gray-600 mb-1">{teacher.designation}</p>
+        <p className="text-sm text-gray-500">
+          <span className="font-medium">Email:</span> {teacher.email}
+        </p>
+        <p className="text-sm text-gray-500">
+          <span className="font-medium">Phone:</span> {teacher.phone}
+        </p>
+        <p className="text-sm text-gray-500 mb-4">
+          <span className="font-medium">Department:</span> {teacher.department}
+        </p>
+
+        {/* Buttons */}
+        {user?.role === 'teacher' && (
+          <div className="flex justify-center gap-4 mt-4">
+            <Link
+              to={`/dashboard/edit-teacher/${teacher._id}`}
+              className="bg-green-500 text-white px-4 py-1.5 rounded-md text-sm font-semibold hover:bg-green-600 transition"
+            >
+              Edit
+            </Link>
+            <button
+              onClick={() => handleDelete(teacher._id)}
+              className="bg-red-500 text-white px-4 py-1.5 rounded-md text-sm font-semibold hover:bg-red-600 transition"
+            >
+              Delete
+            </button>
           </div>
-        ))}
-        <span className='text-red-500 font-bold text-lg'>{teachers.length === 0 && 'please added your Information in "AddTeacher" from.'}</span>
+        )}
       </div>
-    </div>
+    ))}
+
+    {teachers.length === 0 && (
+      <span className="text-red-500 font-semibold text-center">
+        Please add your information in the <strong>"Add Teacher"</strong> form.
+      </span>
+    )}
+  </div>
+</div>
+
   );
 };
 

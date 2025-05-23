@@ -63,9 +63,9 @@ export default function AddResultForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-3xl mx-auto bg-white shadow-md p-8 rounded-xl space-y-6">
+    <form onSubmit={handleSubmit} className="max-w-3xl mx-auto font-english bg-white shadow-md p-8 rounded-xl space-y-6">
 
-      <h2 className="text-2xl font-bold text-gray-700 border-b pb-2 mb-4">Student Result Submission</h2>
+      <h2 className="text-2xl font-bold text-gray-700 border-b pb-2 border-b-blue-400 mb-7 text-center">Student Result Submission</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Student Name */}

@@ -57,7 +57,7 @@ const AddAcademicInfo = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto p-4 bg-white shadow rounded">
+    <div className="max-w-xl mx-auto p-4 bg-white shadow rounded font-english">
       <h2 className="text-xl font-bold mb-4">📄 Add Academic Information</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
 

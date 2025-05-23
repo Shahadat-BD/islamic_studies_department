@@ -11,7 +11,7 @@ import DashboardLayout from "./Layout/DashboardLayout";
 import AddTeacher from "./Component/AddTeacher";
 import TeacherList from "./Component/teacherList";
 import EditTeacher from "./Component/EditTeacher";
-import RoutineList from "./pages/routineList";
+import RoutineList from "./pages/RoutineList";
 import AddRoutine from "./Component/AddRoutine";
 import EditRoutine from "./Component/EditRoutine";
 import AllRoutineList from "./pages/AllRoutineList";
@@ -28,6 +28,7 @@ import ShowNotice from "./pages/showNotice";
 import TeacherNoticeShow from "./pages/teacherNoticeShow";
 import AddResultForm from "./Component/AddResultForm";
 import MyResult from "./Component/MyResult";
+import Footer from "./pages/Footer";
 
 function App() {
 
@@ -164,14 +165,14 @@ function App() {
               </RoleBasedRoute>
             }
           />
-          {/* <Route
+          <Route
             path="my-result"
             element={
               <RoleBasedRoute allowedRoles={["student"]}>
                 <MyResult />
               </RoleBasedRoute>
             }
-          /> */}
+          />
 
         
           
@@ -180,6 +181,8 @@ function App() {
         {/* 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>
+
+      <Footer></Footer>
     </>
   );
 }

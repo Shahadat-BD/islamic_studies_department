@@ -37,16 +37,71 @@ const AddNotice = () => {
   };
 
   return (
-    <div className="p-4 max-w-md mx-auto bg-white rounded shadow">
-      <h2 className="text-xl font-bold mb-4">Add Notice</h2>
-      <form onSubmit={handleSubmit} className="space-y-3">
-        <input type="text" placeholder="Title" className="w-full p-2 border" value={title} onChange={(e) => setTitle(e.target.value)} />
-        <input type="date" className="w-full p-2 border" value={date} onChange={(e) => setDate(e.target.value)} />
-        <input type="text" placeholder="Posted by" className="w-full p-2 border" value={postedBy} onChange={(e) => setPostedBy(e.target.value)} />
-        <input type="file" className="w-full" ref={fileInputRef} onChange={(e) => setFile(e.target.files[0])} />
-        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
-      </form>
+  <div className="max-w-lg mx-auto bg-white rounded-xl shadow-md p-6 mt-10 font-english">
+  <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">📢 Add New Notice</h2>
+  <form onSubmit={handleSubmit} className="space-y-5">
+
+    {/* Title */}
+    <div>
+      <label className="block text-gray-700 mb-1 font-medium">Notice Title</label>
+      <input
+        type="text"
+        placeholder="Enter notice title"
+        className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        required
+      />
     </div>
+
+    {/* Date */}
+    <div>
+      <label className="block text-gray-700 mb-1 font-medium">Notice Date</label>
+      <input
+        type="date"
+        className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        value={date}
+        onChange={(e) => setDate(e.target.value)}
+        required
+      />
+    </div>
+
+    {/* Posted By */}
+    <div>
+      <label className="block text-gray-700 mb-1 font-medium">Posted By</label>
+      <input
+        type="text"
+        placeholder="Your name"
+        className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        value={postedBy}
+        onChange={(e) => setPostedBy(e.target.value)}
+        required
+      />
+    </div>
+
+    {/* File Upload */}
+    <div>
+      <label className="block text-gray-700 mb-1 font-medium">Attach File (optional)</label>
+      <input
+        type="file"
+        className="w-full file:border file:border-gray-300 file:p-1 file:rounded file:bg-blue-50 file:text-blue-700"
+        ref={fileInputRef}
+        onChange={(e) => setFile(e.target.files[0])}
+      />
+    </div>
+
+    {/* Submit Button */}
+    <div className="text-center">
+      <button
+        type="submit"
+        className="bg-blue-600 w-full hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-lg transition duration-200"
+      >
+        Submit Notice
+      </button>
+    </div>
+  </form>
+</div>
+
   );
 };
 

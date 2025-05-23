@@ -60,7 +60,7 @@ const MyAcademicInfo = () => {
   }
 
   return (
-    <div className="w-3/4 mx-auto bg-white p-4 rounded shadow">
+    <div className="w-3/4 mx-auto bg-white p-4 rounded shadow font-english">
       <h2 className="text-xl font-bold mb-4">My Academic Info</h2>
 
       {editMode ? (
@@ -89,15 +89,15 @@ const MyAcademicInfo = () => {
            </div>
 
           <div>
-           <p><strong>Name:</strong> {myInfo.name}</p>
-          <p><strong>Email:</strong> {myInfo.email}</p>
-          <p><strong>Reg. No:</strong> {myInfo.registrationNumber}</p>
-          <p><strong>Class Roll:</strong> {myInfo.classRoll}</p>
-          <p><strong>Mobile:</strong> {myInfo.mobileNumber}</p>
-          <p><strong>Session:</strong> {myInfo.session}</p>
-          <p><strong>Year:</strong> {myInfo.year}</p>
+           <p className='pb-2'><strong>Name:</strong> {myInfo.name}</p>
+          <p className='pb-2'><strong>Email:</strong> {myInfo.email}</p>
+          <p className='pb-2'><strong>Reg. No:</strong> {myInfo.registrationNumber}</p>
+          <p className='pb-2'><strong>Class Roll:</strong> {myInfo.classRoll}</p>
+          <p className='pb-2'><strong>Mobile:</strong> {myInfo.mobileNumber}</p>
+          <p className='pb-2'><strong>Session:</strong> {myInfo.session}</p>
+          <p className='pb-2'><strong>Year:</strong> {myInfo.year}</p>
 
-          <div className="flex justify-between mt-4">
+          <div className="flex gap-3 mt-3">
             <button onClick={() => setEditMode(true)} className="bg-blue-600 text-white px-4 py-2 rounded">Edit</button>
             <button onClick={handleDelete} className="bg-red-600 text-white px-4 py-2 rounded">Delete</button>
           </div>

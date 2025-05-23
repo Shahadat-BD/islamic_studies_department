@@ -23,39 +23,39 @@ const Navbar = () => {
 
     <li className='pr-10' ><NavLink className="px-0 rounded-none font-bold text-md"
       style={({ isActive }) => ({
-        color: isActive ? "#ef233c" : "black",
-        borderBottom: isActive ? "2px solid #ef233c" : "none",
+        color: isActive ? "#1E40AF" : "black",
+        borderBottom: isActive ? "2px solid #1E40AF" : "none",
         background: isActive ? "none" : "none",
       })} to={'/'}>Home</NavLink></li>
 
     <li className='pr-10'><NavLink className="px-0 rounded-none font-bold text-md"
       style={({ isActive }) => ({
-        color: isActive ? "#ef233c" : "black",
-        borderBottom: isActive ? "2px solid #ef233c" : "none",
+        color: isActive ? "#1E40AF" : "black",
+        borderBottom: isActive ? "2px solid #1E40AF" : "none",
         background: isActive ? "none" : "none",
       })} to={'/all-teacher-list'}>Teacher List</NavLink></li>
 
     <li className='pr-10'>
      <NavLink className="px-0 rounded-none font-bold text-md"
       style={({ isActive }) => ({
-        color: isActive ? "#ef233c" : "black",
-        borderBottom: isActive ? "2px solid #ef233c" : "none",
+        color: isActive ? "#1E40AF" : "black",
+        borderBottom: isActive ? "2px solid #1E40AF" : "none",
         background: isActive ? "none" : "none",
       })} to={'/all-routine-list'}>Routine List</NavLink></li>
 
     <li className='pr-10'>
      <NavLink className="px-0 rounded-none font-bold text-md"
       style={({ isActive }) => ({
-        color: isActive ? "#ef233c" : "black",
-        borderBottom: isActive ? "2px solid #ef233c" : "none",
+        color: isActive ? "#1E40AF" : "black",
+        borderBottom: isActive ? "2px solid #1E40AF" : "none",
         background: isActive ? "none" : "none",
       })} to={'/my-result'}>Result Check</NavLink></li>
 
     <li className='pr-10'>
      <NavLink className="px-0 rounded-none font-bold text-md"
       style={({ isActive }) => ({
-        color: isActive ? "#ef233c" : "black",
-        borderBottom: isActive ? "2px solid #ef233c" : "none",
+        color: isActive ? "#1E40AF" : "black",
+        borderBottom: isActive ? "2px solid #1E40AF" : "none",
         background: isActive ? "none" : "none",
       })} to={'/show-notice'}>Notice list </NavLink></li>
 
@@ -66,7 +66,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar fixed z-20 bg-base-100  m-auto border-b-2 font-english">
+      <div className="navbar fixed top-0 left-0 w-full bg-white shadow z-50  bg-base-100  m-auto border-b-2 font-english">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -93,7 +93,7 @@ const Navbar = () => {
              ''
               : 
               <Link to={'/login'}>
-                <button className='px-5 py-2 rounded-md text-white bg-[#ef233c] font-bold text-md'>login</button>
+                <button className='px-5 py-2 rounded-md text-white bg-blue-600 font-bold text-md'>login</button>
              </Link>
 
             }
