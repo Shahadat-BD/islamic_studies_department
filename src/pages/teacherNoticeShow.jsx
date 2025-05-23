@@ -52,7 +52,7 @@ const TeacherNoticeShow = () => {
 
   return (
 <div className="max-w-6xl mx-auto  font-bangla">
-  <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">Manage Notices</h2>
+  <h2 className="text-3xl font-bold mb-6 text-center text-blue-900">Manage Notices</h2>
 
   <div className="overflow-x-auto rounded shadow">
     <table className="min-w-full bg-white border border-gray-300">

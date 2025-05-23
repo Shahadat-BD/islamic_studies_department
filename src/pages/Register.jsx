@@ -2,6 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
   const { register, user } = useContext(AuthContext);
@@ -92,9 +93,9 @@ const Register = () => {
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-2 top-2 text-sm text-blue-600"
+            className="absolute right-2 top-[13px] text-lg"
           >
-            {showPassword ? "Hide" : "Show"}
+            {showPassword ? <FaEyeSlash/> : <FaEye/>}
           </button>
         </div>
 
@@ -108,7 +109,7 @@ const Register = () => {
 
         <button
           type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded w-full"
+          className="bg-blue-900 text-white px-4 py-2 rounded w-full"
         >
           Register
         </button>

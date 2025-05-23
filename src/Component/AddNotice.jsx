@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
+import { ScrollText } from 'lucide-react';
 
 const AddNotice = () => {
   const [title, setTitle] = useState('');
@@ -37,9 +38,13 @@ const AddNotice = () => {
   };
 
   return (
-  <div className="max-w-lg mx-auto bg-white rounded-xl shadow-md p-6 mt-10 font-english">
-  <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">📢 Add New Notice</h2>
-  <form onSubmit={handleSubmit} className="space-y-5">
+  <div className="max-w-2xl mx-auto bg-white rounded-xl shadow-md mt-8 font-english">
+<div className='bg-blue-900 text-white rounded-t-xl py-3'>
+   <h2 className="text-2xl font-bold pl-5  flex items-center gap-4">
+     <ScrollText size={25} /> Add Notice
+  </h2>
+ </div>
+  <form onSubmit={handleSubmit} className="space-y-5 p-6">
 
     {/* Title */}
     <div>
@@ -94,7 +99,7 @@ const AddNotice = () => {
     <div className="text-center">
       <button
         type="submit"
-        className="bg-blue-600 w-full hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-lg transition duration-200"
+        className="bg-blue-900 w-full hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-lg transition duration-200"
       >
         Submit Notice
       </button>

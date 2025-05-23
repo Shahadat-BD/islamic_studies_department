@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { GraduationCap } from 'lucide-react';
 
 const GetAllStudentInfo = () => {
   const [data, setData] = useState([]);
@@ -33,11 +34,15 @@ const GetAllStudentInfo = () => {
   const totalPages = Math.ceil(total / limit);
 
   return (
-  <div className="p-4 font-english">
-  <h2 className="text-xl font-bold mb-4 text-gray-800">📄 All Academic Info</h2>
+  <div className="font-english bg-white rounded-lg shadow-lg ">
 
+ <div className='bg-blue-900 text-white rounded-t-xl py-3 mb-3'>
+   <h2 className="text-2xl font-bold pl-5  flex items-center gap-4">
+      <GraduationCap size={25} /> All Students Information
+  </h2>
+ </div>
   {/* Search + Filter */}
-  <div className="flex gap-4 mb-4">
+  <div className="flex gap-4 p-4">
     <input
       type="text"
       placeholder="Search by name or roll"
@@ -66,7 +71,7 @@ const GetAllStudentInfo = () => {
   </div>
 
   {/* Table */}
-  <div className="overflow-x-auto">
+  <div className="overflow-x-auto p-4">
     <table className="table-auto w-full border border-gray-300 border-collapse">
       <thead>
         <tr className="bg-blue-100 text-gray-800">
@@ -99,7 +104,7 @@ const GetAllStudentInfo = () => {
   </div>
 
   {/* Pagination */}
-  <div className="mt-4 flex justify-center gap-2">
+  <div className="mt-4 flex justify-center gap-2 p-4">
     {Array.from({ length: totalPages }, (_, i) => (
       <button
         key={i}

@@ -33,13 +33,13 @@ const sortedNotices = [...notices].sort((a, b) => {
 
   return (
 <div className="max-w-6xl mx-auto px-4 py-24 font-english">
-  <h2 className="text-3xl font-semibold text-center text-gray-800 mb-8 font-bangla">📄 📢 সকল নোটিশ দেখুন</h2>
+  <h2 className="text-3xl font-semibold text-center text-blue-900 mb-8 font-bangla">📢 সকল নোটিশ দেখুন</h2>
 
   {/* Sort Button */}
   <div className="flex justify-left mb-4">
     <button
       onClick={() => setSortOrder(prev => (prev === 'asc' ? 'desc' : 'asc'))}
-      className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-md transition duration-200"
+      className="bg-blue-900 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-md transition duration-200"
     >
       Sort by Date: {sortOrder === 'asc' ? 'Oldest First' : 'Newest First'}
     </button>

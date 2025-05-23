@@ -57,9 +57,11 @@ const AddAcademicInfo = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto p-4 bg-white shadow rounded font-english">
-      <h2 className="text-xl font-bold mb-4">📄 Add Academic Information</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="max-w-xl mx-auto bg-white shadow rounded font-english">
+      <div className='bg-blue-900 text-white rounded-t p-3 mb-2'>
+         <h2 className="text-xl font-bold">📄 Add Academic Information</h2>
+      </div>
+      <form onSubmit={handleSubmit} className="space-y-4 p-4">
 
         <input
           name="name"
@@ -141,7 +143,7 @@ const AddAcademicInfo = () => {
           <option>Master's</option>
         </select>
 
-        <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded w-full">
+        <button type="submit" className="bg-blue-900 text-white px-4 py-2 rounded w-full">
           Submit
         </button>
       </form>

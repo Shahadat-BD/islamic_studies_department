@@ -27,7 +27,7 @@ const AboutDepartment = () => {
           </p>
 
           <div className="bg-white shadow p-6 rounded-lg mb-6" data-aos="fade-up" data-aos-delay="100">
-            <h3 className="text-xl font-semibold text-blue-800 mb-2">
+            <h3 className="text-xl font-semibold text-blue-900 mb-2">
               🎯 লক্ষ্য (Mission)
             </h3>
             <p className="text-gray-700">
@@ -36,7 +36,7 @@ const AboutDepartment = () => {
           </div>
 
           <div className="bg-white shadow p-6 rounded-lg" data-aos="fade-up" data-aos-delay="200">
-            <h3 className="text-xl font-semibold text-blue-800 mb-2">
+            <h3 className="text-xl font-semibold text-blue-900 mb-2">
               🌟 উদ্দেশ্য (Vision)
             </h3>
             <p className="text-gray-700">

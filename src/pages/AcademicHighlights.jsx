@@ -65,7 +65,7 @@ useEffect(() => {
               data-aos-delay={index * 100} // stagger animation
             >
               <div className="text-3xl mb-3">{item.icon}</div>
-              <h3 className="text-xl font-semibold text-blue-800 mb-2">{item.title}</h3>
+              <h3 className="text-xl font-semibold text-blue-900 mb-2">{item.title}</h3>
               <p className="text-gray-700 leading-relaxed">{item.desc}</p>
             </div>
           ))}

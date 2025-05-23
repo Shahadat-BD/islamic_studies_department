@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
+import { Users } from 'lucide-react';
 
 const TeacherList = () => {
   const [teachers, setTeachers] = useState([]);
@@ -39,8 +40,8 @@ const TeacherList = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-4 font-english">
-  <h2 className="text-2xl font-bold text-gray-800 mb-14 text-center border-b pb-2">
-    Teacher Information
+  <h2 className="text-2xl font-bold text-blue-900 mb-14 flex items-center gap-3 border-b border-blue-600 pb-2">
+    <Users size={25} />  Teacher Information
   </h2>
 
   <div className="grid gap-6">

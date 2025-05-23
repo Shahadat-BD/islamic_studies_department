@@ -8,7 +8,6 @@ import logo from "../assets/islamicStudieslogo.png";
 const Navbar = () => {
 
  const {user, logout} = useContext(AuthContext)
-  console.log(user);
   
    const handleLogout = async () => {
     try {
@@ -93,7 +92,7 @@ const Navbar = () => {
              ''
               : 
               <Link to={'/login'}>
-                <button className='px-5 py-2 rounded-md text-white bg-blue-600 font-bold text-md'>login</button>
+                <button className='px-5 py-2 rounded-md text-white bg-blue-900 font-bold text-md'>login</button>
              </Link>
 
             }

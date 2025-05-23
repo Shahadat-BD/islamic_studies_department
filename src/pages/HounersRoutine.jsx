@@ -34,7 +34,7 @@ const HonoursRoutine = () => {
            📅  ক্লাস রুটিন
           </h2>
           <p className="text-gray-700 text-lg max-w-2xl mx-auto font-bangla">
-            এখানে শুধু অনার্স তৃতীয় বর্ষের রুটিন দেওয়া হয়েছে বাকি রুটিন দেখতে <span className='text-blue-500 font-semibold'>'সকল ইয়ারের রুটিন দেখুন'</span> বাটনে ক্লিক করুন
+            এখানে শুধু অনার্স তৃতীয় বর্ষের রুটিন দেওয়া হয়েছে বাকি রুটিন দেখতে <span className='text-blue-900 font-semibold'>'সকল ইয়ারের রুটিন দেখুন'</span> বাটনে ক্লিক করুন
           </p>
         </div>
 
@@ -42,7 +42,7 @@ const HonoursRoutine = () => {
       {filtered.length === 0 ? (
         <p className="text-center text-red-500 text-lg">
           No class on <span className="font-bold text-green-600">{dayFilter}</span> for{' '}
-          <span className="font-bold text-blue-600">{selectedYear}</span>
+          <span className="font-bold text-blue-900">{selectedYear}</span>
         </p>
       ) : (
         <div className="gap-6">
@@ -54,7 +54,7 @@ const HonoursRoutine = () => {
               data-aos-delay={idx * 100}
             >
               <div className="mb-4">
-                <h3 className="text-xl font-semibold text-blue-700 mb-1">
+                <h3 className="text-xl font-semibold text-blue-900 mb-1">
                   📘 {routine.year} - {routine.day}
                 </h3>
                 <p className="text-sm text-gray-600">
@@ -92,7 +92,7 @@ const HonoursRoutine = () => {
       <div className="mt-10 text-center">
         <a
           href="/all-routine-list"
-          className="inline-block px-6 py-3 bg-blue-700 text-white rounded-full shadow hover:bg-blue-800 transition"
+          className="inline-block px-6 py-3 bg-blue-900 text-white rounded-full shadow hover:bg-blue-800 transition"
         >
           📚 সকল ইয়ারের রুটিন দেখুন
         </a>

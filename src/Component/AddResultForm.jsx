@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { ClipboardList } from 'lucide-react';
 
 export default function AddResultForm() {
   const [formData, setFormData] = useState({
@@ -61,11 +62,17 @@ export default function AddResultForm() {
       alert('Failed to submit result.');
     }
   };
-
+// max-w-2xl mx-auto font-english bg-white shadow-md p-8 mt-8 rounded-xl
   return (
-    <form onSubmit={handleSubmit} className="max-w-3xl mx-auto font-english bg-white shadow-md p-8 rounded-xl space-y-6">
 
-      <h2 className="text-2xl font-bold text-gray-700 border-b pb-2 border-b-blue-400 mb-7 text-center">Student Result Submission</h2>
+     <div className='max-w-2xl mx-auto font-english bg-white shadow-md mt-8 rounded-xl'>
+      <div className='bg-blue-900 text-white rounded-t-xl py-3'>
+        <h2 className="text-2xl font-bold pl-5 flex items-center gap-4">
+          <ClipboardList size={25} /> Add Result Form
+        </h2>
+      </div>
+
+          <form onSubmit={handleSubmit} className="space-y-6 p-8">
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Student Name */}
@@ -218,11 +225,14 @@ export default function AddResultForm() {
       <div className="pt-2">
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition"
+          className="w-full bg-blue-900 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition"
         >
           Submit Result
         </button>
       </div>
     </form>
+     </div>
+
+  
   );
 }

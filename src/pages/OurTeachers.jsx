@@ -42,7 +42,7 @@ const OurTeachers = () => {
         >
           👨‍🏫 আমাদের শিক্ষকবৃন্দ
         </h2>
-        <p className="text-gray-700 text-lg max-w-2xl mx-auto mb-12" data-aos="fade-up" data-aos-delay="100">
+        <p className="text-gray-700 text-lg max-w-2xl mx-auto mb-[70px]" data-aos="fade-up" data-aos-delay="100">
           অভিজ্ঞ, আন্তরিক ও ইসলামি মূল্যবোধে গঠিত শিক্ষকগণ আমাদের গর্ব। শিক্ষার্থীদের নৈতিক ও একাডেমিক বিকাশে তাঁরা সদা নিবেদিত।
         </p>
 
@@ -58,12 +58,12 @@ const OurTeachers = () => {
               <img
                 src={teacher.image}
                 alt={teacher.name}
-                className="w-24 h-24 mx-auto rounded-full mb-4 object-cover"
+                className="w-24 h-24 border-2 lg:-mt-16  border-blue-900 mx-auto rounded-full mb-4 object-cover"
               />
-              <h3 className="text-xl font-semibold text-blue-800 mb-1">
+              <h3 className="text-xl font-semibold text-blue-900 mb-1">
                 {teacher.name}
               </h3>
-              <p className="text-sm text-gray-600 mb-1">{teacher.title}</p>
+              <p className="text-sm text-blue-500 font-semibold mb-2 pb-1 border-b border-black">{teacher.title}</p>
               <p className="text-sm text-gray-500 mb-2">{teacher.qualification}</p>
               <p className="text-gray-700 text-sm leading-relaxed">{teacher.bio}</p>
             </div>

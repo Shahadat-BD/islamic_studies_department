@@ -89,7 +89,7 @@ const RecentNotices = () => {
          <div className="mt-8 text-center" data-aos="fade-up">
         <a
           href="/show-notice"
-          className="inline-block px-6 py-3 bg-blue-700 text-white rounded-full shadow hover:bg-blue-800 transition"
+          className="inline-block px-6 py-3 bg-blue-900 text-white rounded-full shadow hover:bg-blue-800 transition"
         >
            📢 সকল নোটিশ দেখুন
         </a>

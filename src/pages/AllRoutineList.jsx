@@ -32,9 +32,12 @@ const AllRoutineList = () => {
 
   return (
  <div className="max-w-6xl mx-auto px-4 pb-12 pt-24 font-english">
-  <h2 className="text-4xl font-bold mb-10 text-center text-gray-800 tracking-wide">
-    📘 Routine List
+  <h2 className="text-4xl font-bold mb-4 text-center text-blue-900 font-bangla tracking-wide">
+    📅 ক্লাস রুটিন
   </h2>
+  <p className="text-gray-700 text-lg mb-4 text-center font-bangla">
+   এখানে সকল বর্ষের ক্লাস রুটিন দেওয়া হয়েছে. <span className='text-blue-500 font-bold'>দিন এবং বর্ষ সিলেক্ট</span> করে ক্লাস রুটিন দেখুন.
+  </p>
 
   {/* Filter Section */}
   <div className="flex flex-col sm:flex-row gap-4 justify-center mb-5">
@@ -72,7 +75,7 @@ const AllRoutineList = () => {
         className="bg-white border border-gray-200 shadow-md rounded-2xl mb-10 overflow-hidden"
       >
         {/* Header */}
-        <div className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white px-6 py-4 flex flex-col sm:flex-row justify-between sm:items-center gap-2">
+        <div className="bg-blue-900 text-white px-6 py-4 flex flex-col sm:flex-row justify-between sm:items-center gap-2">
           <h3 className="text-xl font-bold">📚 {routine.year} - {routine.day}</h3>
           <span className="text-sm italic">🗓 Created: {routine.RoutineCreated}</span>
         </div>

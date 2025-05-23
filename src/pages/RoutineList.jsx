@@ -1,6 +1,7 @@
 import {  useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { CalendarDays } from 'lucide-react';
 
 const RoutineList = () => {
   const [routines, setRoutines] = useState([]);
@@ -49,13 +50,15 @@ const RoutineList = () => {
 
 
   return (
-    <div className="max-w-7xl mx-auto px-4  font-english">
-  <h2 className="text-3xl font-bold text-center text-gray-800 mb-10">
-    📘 Routine List
+    <div className="max-w-7xl bg-white rounded-xl shadow-lg mx-auto pb-5 font-english">
+  <div className='bg-blue-900 text-white rounded-t-xl py-3 mb-6'>
+   <h2 className="text-2xl font-bold pl-5  flex items-center gap-4">
+       <CalendarDays size={25} /> Routine List
   </h2>
+ </div>
 
   {/* Filter Section */}
-  <div className="flex flex-col sm:flex-row justify-left items-center gap-4 mb-10">
+  <div className="flex flex-col sm:flex-row justify-lef items-center gap-4 mb-8 ml-6">
     <select
       value={selectedYear}
       onChange={(e) => setSelectedYear(e.target.value)}
@@ -86,7 +89,7 @@ const RoutineList = () => {
     filtered.map((routine) => (
       <div
         key={routine._id}
-        className="bg-white border border-gray-200 rounded-xl shadow-md p-6 mb-8 transition duration-300 hover:shadow-lg"
+        className="bg-white border border-gray-200 rounded-xl m-6 p-6  transition duration-300 hover:shadow-lg"
       >
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between md:items-center mb-4">

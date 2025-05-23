@@ -58,7 +58,7 @@ const StudentTestimonials = () => {
                   className="w-14 h-14 rounded-full object-cover border-2 border-blue-500"
                 />
                 <div>
-                  <h4 className="font-semibold text-blue-800">{item.name}</h4>
+                  <h4 className="font-semibold text-blue-900">{item.name}</h4>
                   <p className="text-sm text-gray-500">{item.year}</p>
                 </div>
               </div>

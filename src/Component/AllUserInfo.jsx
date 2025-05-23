@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { User } from "lucide-react";
 
 const AllUserInfo = () => {
   const [users, setUsers] = useState([]);
@@ -50,11 +51,16 @@ const AllUserInfo = () => {
   };
 
   return (
-    <div className="p-4 font-english bg-white rounded shadow-md">
-  <h2 className="text-2xl font-bold text-gray-800 mb-4">👥 All Users</h2>
+    <div className="font-english bg-white rounded shadow-md">
+ 
+  <div className='bg-blue-900 text-white rounded-t-xl py-3'>
+     <h2 className="text-2xl font-bold pl-5  flex items-center gap-4">
+       <User size={25} /> All User Info
+     </h2>
+ </div>
 
   {/* 🔍 Search Box */}
-  <div className="mb-4">
+  <div className="m-4">
     <input
       type="text"
       placeholder="Search by name..."
@@ -64,7 +70,7 @@ const AllUserInfo = () => {
     />
   </div>
 
-  <div className="overflow-x-auto">
+  <div className="overflow-x-auto p-4 ">
     <table className="min-w-full table-auto border border-gray-200 text-left shadow-sm rounded">
       <thead className="bg-blue-100 text-gray-700">
         <tr>
@@ -129,7 +135,7 @@ const AllUserInfo = () => {
       <p className="text-center text-gray-500 mt-6 italic">No users found</p>
     )}
   </div>
-</div>
+   </div>
 
   );
 };

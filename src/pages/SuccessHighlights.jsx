@@ -8,7 +8,7 @@ const SuccessHighlights = () => {
       title: "মোট শিক্ষার্থী",
       value: 500,
       suffix: "+",
-      bg: "bg-blue-500",
+      bg: "bg-blue-900",
     },
     {
       icon: <FaBriefcase size={60} />,

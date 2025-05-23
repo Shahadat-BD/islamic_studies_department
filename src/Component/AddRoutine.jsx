@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';;
+import { useNavigate } from 'react-router-dom';import { CalendarPlus } from 'lucide-react';
+;
 
 const AddRoutine = () => {
   const [formData, setFormData] = useState({
@@ -53,10 +54,13 @@ const AddRoutine = () => {
   };
 
   return (
-  <div className="max-w-4xl mx-auto px-6 py-10 bg-white shadow-lg rounded-xl border border-gray-100 font-english">
-  <h2 className="text-2xl font-bold text-center mb-6">🗓️ Add Class Routine</h2>
-
-  <form onSubmit={handleSubmit} className="space-y-6">
+  <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-xl border border-gray-100 font-english">
+  <div className='bg-blue-900 text-white rounded-t-xl py-2'>
+   <h2 className="text-2xl font-bold pl-5 flex items-center gap-4">
+     <CalendarPlus size={25} /> Add Routine
+  </h2>
+ </div>
+  <form onSubmit={handleSubmit} className="space-y-6 px-6 py-10">
 
     {/* Department & Creator */}
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -162,7 +166,7 @@ const AddRoutine = () => {
     <div className="text-center pt-4">
       <button
         type="submit"
-        className="bg-blue-600 w-full hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition duration-200"
+        className="bg-blue-900 w-full hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition duration-200"
       >
         ✅ Submit Routine
       </button>

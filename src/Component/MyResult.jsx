@@ -124,10 +124,13 @@ const handleDownloadPDF = async () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto px-4 pb-8 lg:pt-20 pt-24 font-english">
+    <div className="max-w-3xl mx-auto px-4 pb-12 lg:pt-28 pt-24 font-english">
       {!result ? (
-        <div className="bg-white shadow-md rounded-lg p-6">
-          <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">🎓 Student Result Portal</h2>
+        <div className="bg-white shadow-lg rounded-lg p-6">
+          <h2 className="text-3xl font-bold text-blue-900 mb-4 text-center">🎓 Student Result Portal</h2>
+          <p className="text-gray-700 text-lg mb-6 text-center font-bangla">
+            রেজাল্ট প্রকাশিত হলে <span className='text-blue-800 font-semibold'>রোল এবং রেজিস্ট্রেশন নাম্বার</span> দিয়ে রেজাল্ট চেক করুন
+          </p>
 
           <form onSubmit={handleSearch} className="space-y-5">
             <div>
@@ -154,7 +157,7 @@ const handleDownloadPDF = async () => {
 
             <button
               type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition duration-200"
+              className="w-full bg-blue-900 hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition duration-200"
             >
               🔍 Search Result
             </button>

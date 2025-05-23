@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
+import { UserPlus } from 'lucide-react';
 
 const AddTeacher = () => {
   const { user } = useContext(AuthContext);
@@ -48,12 +49,12 @@ const handleSubmit = async (e) => {
   }
 };
 
-
+ 
   return (
     <div className="max-w-2xl mx-auto  bg-white shadow-lg rounded-xl mt-8 font-english">
- <div className='bg-blue-900 text-white rounded-t-xl py-2'>
-   <h2 className="text-2xl font-bold mb-2 text-center">
-    Submit Your Information as a Teacher
+ <div className='bg-blue-900 text-white rounded-t-xl py-3'>
+   <h2 className="text-2xl font-bold pl-5  flex items-center gap-4">
+     <UserPlus size={25} /> Add Teacher
   </h2>
  </div>
 
@@ -157,7 +158,7 @@ const handleSubmit = async (e) => {
     <div className="pt-4">
       <button
         type="submit"
-        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200"
+        className="w-full bg-blue-900 hover:bg-blue-900 text-white font-semibold py-2 px-4 rounded-lg transition duration-200"
       >
         Submit
       </button>

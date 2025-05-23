@@ -29,6 +29,8 @@ import TeacherNoticeShow from "./pages/teacherNoticeShow";
 import AddResultForm from "./Component/AddResultForm";
 import MyResult from "./Component/MyResult";
 import Footer from "./pages/Footer";
+import MyComplaint from "./Component/MyComplaint";
+import ShowMyComplaint from "./Component/ShowMyComplaint";
 
 function App() {
 
@@ -166,10 +168,18 @@ function App() {
             }
           />
           <Route
-            path="my-result"
+            path="my-complaint"
             element={
               <RoleBasedRoute allowedRoles={["student"]}>
-                <MyResult />
+                <MyComplaint/>
+              </RoleBasedRoute>
+            }
+          />
+          <Route
+            path="show-my-complaint"
+            element={
+              <RoleBasedRoute allowedRoles={["student"]}>
+                <ShowMyComplaint/>
               </RoleBasedRoute>
             }
           />

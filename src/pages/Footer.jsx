@@ -1,14 +1,14 @@
 import logo from '../assets/islamicStudieslogo.png'
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-gray-200 pt-12 pb-6 font-bangla">
+    <footer className="bg-gray-900 lg:text-left text-center text-gray-200 pt-12 pb-6 font-bangla">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         {/* Logo & About */}
         <div>
           <img
             src={logo}
             alt="Department Logo"
-            className="w-20 mb-4"
+            className="w-20 lg:mx-0 mx-auto mb-4"
           />
           <h2 className="text-xl font-semibold mb-2">আরবি এবং ইসলামিক স্টাডিজ</h2>
           <p className="text-sm leading-6">
@@ -18,7 +18,7 @@ const Footer = () => {
 
         {/* Quick Links */}
         <div>
-          <h3 className="text-lg font-semibold mb-4 border-b-2 border-white w-20">দ্রুত লিংক</h3>
+          <h3 className="text-lg font-semibold mb-4 border-b-2 border-white lg:w-20 w-1/3 lg:mx-0 mx-auto">দ্রুত লিংক</h3>
           <ul className="space-y-2 text-sm">
             <li><a href="/" className="hover:underline">হোম</a></li>
             <li><a href="/all-teacher-list" className="hover:underline">শিক্ষক তালিকা</a></li>
@@ -30,7 +30,7 @@ const Footer = () => {
 
         {/* Contact Info */}
         <div>
-          <h3 className="text-lg font-semibold mb-4 border-b-2 border-white w-20">যোগাযোগ</h3>
+          <h3 className="text-lg font-semibold mb-4 border-b-2 border-white lg:w-20 w-1/3 lg:mx-0 mx-auto">যোগাযোগ</h3>
           <ul className="space-y-2 text-sm">
             <li>ইমেইল: islamicdept@email.com</li>
             <li>ফোন: ০১৭xxxxxxxx</li>
@@ -40,8 +40,8 @@ const Footer = () => {
 
         {/* Social Media */}
         <div>
-          <h3 className="text-lg font-semibold mb-4 border-b-2 border-white w-32">সোশ্যাল মিডিয়া</h3>
-          <div className="flex gap-4 text-xl">
+          <h3 className="text-lg font-semibold mb-4 border-b-2 border-white lg:w-32 w-1/3 lg:mx-0 mx-auto">সোশ্যাল মিডিয়া</h3>
+          <div className="flex gap-4 text-xl lg:w-full w-1/4 lg:mx-0 mx-auto">
             <a href="https://web.facebook.com/groups/648040018658958"
                target='_blank'
                className="hover:text-blue-400">

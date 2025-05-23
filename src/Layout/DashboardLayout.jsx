@@ -14,6 +14,8 @@ import {
   ClipboardList,
   ArrowLeft,
   Menu,
+  FileWarning,
+  FileSearch,
 } from "lucide-react";
 import { AuthContext } from "../context/AuthProvider";
 import { Link, NavLink, Outlet } from "react-router-dom";
@@ -54,7 +56,7 @@ const DashboardLayout = () => {
           user.email && (
           <>
          <div className="text-center border-b border-gray-50 pb-4">
-           <img src={user.photoURL} className="w-24 h-24 rounded-full border-4 border-red-100 mx-auto" alt="" srcset="" />
+           <img src={user.photoURL} className="w-24 h-24 rounded-full border-4 border-green-500 mx-auto" alt="" srcset="" />
              <h1 className="text-xl font-semibold">
               <span>{user.name}</span>
             </h1>
@@ -103,8 +105,11 @@ const DashboardLayout = () => {
             <NavLink to="my-academic-info" className={navLinkClass} onClick={() => setSidebarOpen(false)}>
               <BookOpenCheck size={18} /> Show Academic Info
             </NavLink>
-            <NavLink to="my-result" className={navLinkClass} onClick={() => setSidebarOpen(false)}>
-              <ClipboardList size={18} /> My Result
+            <NavLink to="my-complaint" className={navLinkClass} onClick={() => setSidebarOpen(false)}>
+              <FileWarning size={18} /> Add Complaint
+            </NavLink>
+            <NavLink to="show-my-complaint" className={navLinkClass} onClick={() => setSidebarOpen(false)}>
+              <FileSearch size={18} />My Complaint
             </NavLink>
           </>
         )}
