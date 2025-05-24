@@ -5,7 +5,7 @@ const AllTeacherList = () => {
   const [teachers, setTeachers] = useState([]);
 
   const fetchTeachers = async () => {
-    const res = await axios.get('http://localhost:5000/api/teachers');
+    const res = await axios.get('https://islamic-studies-backend.onrender.com/api/teachers');
     setTeachers(res.data);
   };
 

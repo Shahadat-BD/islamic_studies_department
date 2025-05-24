@@ -97,7 +97,7 @@ const handleDownloadPDF = async () => {
     }
 
     try {
-      const res = await axios.get('http://localhost:5000/api/results/result', {
+      const res = await axios.get('https://islamic-studies-backend.onrender.com/api/results/result', {
         params: {
           registrationNumber,
           classRoll,

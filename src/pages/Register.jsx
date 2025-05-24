@@ -41,7 +41,7 @@ const Register = () => {
         role: "student"
       };
 
-      await fetch("http://localhost:5000/users", {
+      await fetch("https://islamic-studies-backend.onrender.com/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(saveUser)

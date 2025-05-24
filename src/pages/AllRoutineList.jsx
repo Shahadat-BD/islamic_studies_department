@@ -17,7 +17,7 @@ const AllRoutineList = () => {
   ];
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/routines').then((res) => {
+    axios.get('https://islamic-studies-backend.onrender.com/api/routines').then((res) => {
       setRoutines(res.data);
     });
   }, []);

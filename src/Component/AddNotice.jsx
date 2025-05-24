@@ -25,7 +25,7 @@ const AddNotice = () => {
     formData.append('file', file);
 
     try {
-      const res = await axios.post('http://localhost:5000/notices/add', formData);
+      const res = await axios.post('https://islamic-studies-backend.onrender.com/notices/add', formData);
       toast.success('Notice added successfully !');
       setTitle('');
       setDate('');

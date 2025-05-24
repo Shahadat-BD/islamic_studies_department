@@ -45,7 +45,7 @@ const AuthProvider = ({ children }) => {
 
         while (attempts < 5) {
           try {
-            const res = await fetch(`http://localhost:5000/users/${currentUser.email}`);
+            const res = await fetch(`https://islamic-studies-backend.onrender.com/users/${currentUser.email}`);
             data = await res.json();
 
             if (data?.role) break;
