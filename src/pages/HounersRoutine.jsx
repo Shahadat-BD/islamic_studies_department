@@ -14,7 +14,7 @@ const HonoursRoutine = () => {
   }, []);
 
   useEffect(() => {
-    axios.get('https://islamic-studies-backend.onrender.com/api/routines').then((res) => {
+    axios.get(`${import.meta.env.VITE_API_URL}/api/routines`).then((res) => {
       setRoutines(res.data);
     });
   }, []);

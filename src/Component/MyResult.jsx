@@ -97,7 +97,7 @@ const handleDownloadPDF = async () => {
     }
 
     try {
-      const res = await axios.get('https://islamic-studies-backend.onrender.com/api/results/result', {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/results/result`, {
         params: {
           registrationNumber,
           classRoll,

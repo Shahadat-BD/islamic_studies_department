@@ -13,7 +13,7 @@ const TeacherNoticeShow = () => {
 
   const fetchNotices = async () => {
     try {
-      const res = await axios.get('https://islamic-studies-backend.onrender.com/notices');
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/notices`);
       setNotices(res.data);
     } catch (err) {
       console.error('Error fetching notices:', err);
@@ -35,7 +35,7 @@ const handleDelete = async (id) => {
 
   if (result.isConfirmed) {
     try {
-      await axios.delete(`https://islamic-studies-backend.onrender.com/notices/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/notices/${id}`);
       
       // Show success alert
       await Swal.fire({
@@ -71,7 +71,7 @@ const handleDelete = async (id) => {
   const handleEditSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.put(`https://islamic-studies-backend.onrender.com/notices/${editingNotice._id}`, editingNotice);
+      const res = await axios.put(`${import.meta.env.VITE_API_URL}/notices/${editingNotice._id}`, editingNotice);
       const updated = notices.map(notice =>
         notice._id === editingNotice._id ? res.data : notice
       );
@@ -108,7 +108,7 @@ const handleDelete = async (id) => {
             <td className="py-3 px-4 border">{notice.title}</td>
             <td className="py-3 px-4 border">
               <a
-                href={`https://islamic-studies-backend.onrender.com${notice.fileUrl}`}
+                href={`${import.meta.env.VITE_API_URL}${notice.fileUrl}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 hover:underline font-medium"

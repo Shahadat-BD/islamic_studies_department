@@ -16,7 +16,7 @@ const AllUserInfo = () => {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get("https://islamic-studies-backend.onrender.com/users");
+      const res = await axios.get("${import.meta.env.VITE_API_URL}/users");
       setUsers(res.data);
       console.log(res.data);
 
@@ -41,7 +41,7 @@ const AllUserInfo = () => {
   const handleRoleChange = async (userId, newRole) => {
     try {
       setUpdatingId(userId); // Optional: for showing loading spinner
-      await axios.put(`https://islamic-studies-backend.onrender.com/users/${userId}/role`, { role: newRole });
+      await axios.put(`${import.meta.env.VITE_API_URL}/users/${userId}/role`, { role: newRole });
       await fetchUsers(); // refresh user list after update
     } catch (error) {
       console.error("Failed to update role", error);

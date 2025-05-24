@@ -56,7 +56,7 @@ export default function AddResultForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://islamic-studies-backend.onrender.com/api/results/add-result', formData);
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/results/add-result`, formData);
       toast.success('Result added Successfully!');
     } catch (err) {
       console.error(err.response?.data || err.message);

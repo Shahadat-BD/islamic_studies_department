@@ -7,7 +7,7 @@ const ShowNotice = () => {
   const [sortOrder, setSortOrder] = useState('desc'); // or 'asc'
 
   useEffect(() => {
-    axios.get('https://islamic-studies-backend.onrender.com/notices')
+    axios.get(`${import.meta.env.VITE_API_URL}/notices`)
       .then(res => {
         setNotices(res.data);
         setLoading(false);
@@ -67,7 +67,7 @@ const sortedNotices = [...notices].sort((a, b) => {
                   <td className="py-3 px-4 border">{notice.title}</td>
                   <td className="py-3 px-4 border">
                     <a
-                      href={`https://islamic-studies-backend.onrender.com${notice.fileUrl}`}
+                      href={`${import.meta.env.VITE_API_URL}${notice.fileUrl}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-white bg-green-600 hover:bg-green-700 px-3 py-1 rounded"

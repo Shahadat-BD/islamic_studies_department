@@ -37,7 +37,7 @@ const AddTeacher = () => {
 const handleSubmit = async (e) => {
   e.preventDefault();
   try {
-    await axios.post('https://islamic-studies-backend.onrender.com/api/teachers', formData);
+    await axios.post(`${import.meta.env.VITE_API_URL}/api/teachers`, formData);
     toast.success('teacher information added successfully !')
     navigate('/dashboard/teachers');
   } catch (err) {

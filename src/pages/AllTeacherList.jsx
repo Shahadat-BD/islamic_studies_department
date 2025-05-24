@@ -5,7 +5,7 @@ const AllTeacherList = () => {
   const [teachers, setTeachers] = useState([]);
 
   const fetchTeachers = async () => {
-    const res = await axios.get('https://islamic-studies-backend.onrender.com/api/teachers');
+    const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/teachers`);
     setTeachers(res.data);
   };
 

@@ -21,14 +21,14 @@ const RoutineList = () => {
   ];
 
     useEffect(() => {
-        axios.get('https://islamic-studies-backend.onrender.com/api/routines').then((res) => {
+        axios.get(`${import.meta.env.VITE_API_URL}/api/routines`).then((res) => {
             setRoutines(res.data);
         });
     }, []);
 
  
     const fetchAllRoutines = async () => {
-        const res = await axios.get('https://islamic-studies-backend.onrender.com/api/routines');
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/routines`);
          setRoutines(res.data);
     };
 
@@ -42,7 +42,7 @@ const RoutineList = () => {
 
   const handleDeleteRoutine = async (id) => {
     if (confirm('Are you sure?')) {
-      await axios.delete(`https://islamic-studies-backend.onrender.com/api/routines/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/routines/${id}`);
        fetchAllRoutines();
     }
   };

@@ -9,7 +9,7 @@ const EditRoutine = () => {
   const [formData, setFormData] = useState(null);
 
   useEffect(() => {
-    axios.get(`https://islamic-studies-backend.onrender.com/api/routines/${id}`)
+    axios.get(`${import.meta.env.VITE_API_URL}/api/routines/${id}`)
       .then(res => setFormData(res.data))
       .catch(err => console.error(err));
   }, [id]);
@@ -27,7 +27,7 @@ const EditRoutine = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`https://islamic-studies-backend.onrender.com/api/routines/${id}`, formData);
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/routines/${id}`, formData);
       toast.success('Routine updated successfully!');
       
        // Navigate after short delay

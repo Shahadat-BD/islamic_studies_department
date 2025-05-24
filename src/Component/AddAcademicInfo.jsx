@@ -30,7 +30,7 @@ const AddAcademicInfo = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://islamic-studies-backend.onrender.com/academic-info', formData);
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/academic-info`, formData);
       toast.success("Academic info saved successfully!");
       navigate('/dashboard/my-academic-info')
       // Reset form (email kept)

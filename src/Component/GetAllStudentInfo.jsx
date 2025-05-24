@@ -12,7 +12,7 @@ const GetAllStudentInfo = () => {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get(`https://islamic-studies-backend.onrender.com/academic-info`, {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/academic-info`, {
         params: {
           search,
           year,

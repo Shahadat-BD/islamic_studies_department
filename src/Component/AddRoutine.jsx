@@ -37,7 +37,7 @@ const AddRoutine = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('https://islamic-studies-backend.onrender.com/api/routines', formData);
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/routines`, formData);
       setFormData({
         department: '',
         year: '',

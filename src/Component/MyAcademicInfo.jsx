@@ -15,7 +15,7 @@ const MyAcademicInfo = () => {
   useEffect(() => {
     const fetchMyInfo = async () => {
       try {
-        const res = await axios.get(`https://islamic-studies-backend.onrender.com/academic-info/my-info/${user.email}`);
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/academic-info/my-info/${user.email}`);
         setMyInfo(res.data);
         setFormData(res.data); // pre-fill for edit
       } catch (err) {
@@ -35,7 +35,7 @@ const MyAcademicInfo = () => {
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`https://islamic-studies-backend.onrender.com/academic-info/${myInfo._id}`, formData);
+      await axios.put(`${import.meta.env.VITE_API_URL}/academic-info/${myInfo._id}`, formData);
       toast.success("Academic info updated successfully!");
       setEditMode(false);
     } catch (err) {
@@ -58,7 +58,7 @@ const handleDelete = async () => {
 
   if (result.isConfirmed) {
     try {
-      await axios.delete(`https://islamic-studies-backend.onrender.com/academic-info/${myInfo._id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/academic-info/${myInfo._id}`);
       
       // Show success alert
       await Swal.fire({

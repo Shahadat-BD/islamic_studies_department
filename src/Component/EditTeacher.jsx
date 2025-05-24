@@ -20,7 +20,7 @@ const EditTeacher = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`https://islamic-studies-backend.onrender.com/api/teachers/${id}`).then((res) => {
+    axios.get(`${import.meta.env.VITE_API_URL}/api/teachers/${id}`).then((res) => {
       setFormData(res.data);
     });
   }, [id]);
@@ -33,7 +33,7 @@ const EditTeacher = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`https://islamic-studies-backend.onrender.com/api/teachers/${id}`, formData);
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/teachers/${id}`, formData);
       toast.success('teacher info updated successfully!');
        // Navigate after short delay
     setTimeout(() => {

@@ -15,11 +15,11 @@ const TeacherList = () => {
     try {
       if (user.role === 'teacher') {
         // 🔐 Only fetch the logged-in teacher's info
-        const res = await axios.get(`https://islamic-studies-backend.onrender.com/api/teachers/me/${user.email}`);
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/teachers/me/${user.email}`);
         setTeachers([res.data]); // set as array for consistency
       } else {
         // 🔓 Admin, student, etc. can see all teachers
-        const res = await axios.get('https://islamic-studies-backend.onrender.com/api/teachers');
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/teachers`);
         setTeachers(res.data);
       }
     } catch (err) {
@@ -29,7 +29,7 @@ const TeacherList = () => {
 
   const handleDelete = async (id) => {
     if (confirm('Are you sure?')) {
-      await axios.delete(`https://islamic-studies-backend.onrender.com/api/teachers/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/teachers/${id}`);
       fetchTeachers();
     }
   };
