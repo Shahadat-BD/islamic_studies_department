@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';import { CalendarPlus } from 'lucide-react';
+import toast, { Toaster } from 'react-hot-toast';
 ;
 
 const AddRoutine = () => {
@@ -45,10 +46,10 @@ const AddRoutine = () => {
         room: '',
         slots: Array(6).fill({ time: '', subjectSymbol: '', subjectName: '', teacher: '' }),
       });
-    alert('Routine added successfully!');
+    toast.success('Routine added successfully!');
     navigate("/dashboard/routines")
     } catch (err) {
-      alert('Failed to add routine.');
+      toast.error('Failed to add routine.');
       console.error(err);
     }
   };
@@ -172,6 +173,7 @@ const AddRoutine = () => {
       </button>
     </div>
   </form>
+  <Toaster position='top-right'/>
 </div>
 
   );

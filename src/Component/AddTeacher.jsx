@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
 import { UserPlus } from 'lucide-react';
+import toast, { Toaster } from 'react-hot-toast';
 
 const AddTeacher = () => {
   const { user } = useContext(AuthContext);
@@ -37,14 +38,15 @@ const handleSubmit = async (e) => {
   e.preventDefault();
   try {
     await axios.post('http://localhost:5000/api/teachers', formData);
+    toast.success('teacher information added successfully !')
     navigate('/dashboard/teachers');
   } catch (err) {
     if (err.response && err.response.status === 409) {
-      alert('You have already submitted your information.');
+      toast.error('You have already submitted your information.');
       
     } else {
       console.error(err);
-      alert('Something went wrong. Please try again.');
+      toast.error('Something went wrong. Please try again.');
     }
   }
 };
@@ -164,6 +166,7 @@ const handleSubmit = async (e) => {
       </button>
     </div>
   </form>
+  <Toaster position='top-right'/>
 </div>
 
   );

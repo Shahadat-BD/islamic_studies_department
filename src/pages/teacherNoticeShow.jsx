@@ -1,7 +1,8 @@
 // TeacherNoticeShow.jsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
+ import Swal from 'sweetalert2';
+import toast, { Toaster } from 'react-hot-toast';
 const TeacherNoticeShow = () => {
   const [notices, setNotices] = useState([]);
   const [editingNotice, setEditingNotice] = useState(null);
@@ -19,16 +20,48 @@ const TeacherNoticeShow = () => {
     }
   };
 
-  const handleDelete = async (id) => {
-    if (!window.confirm('Are you sure you want to delete this notice?')) return;
+
+
+const handleDelete = async (id) => {
+  const result = await Swal.fire({
+    title: 'Are you sure?',
+    text: "This notice will be permanently deleted!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
+    confirmButtonText: 'Yes, delete it!',
+  });
+
+  if (result.isConfirmed) {
     try {
       await axios.delete(`http://localhost:5000/notices/${id}`);
-      setNotices(notices.filter(notice => notice._id !== id));
+      
+      // Show success alert
+      await Swal.fire({
+        title: 'Deleted!',
+        text: 'Notice deleted successfully.',
+        icon: 'success',
+        timer: 1500,
+        showConfirmButton: false,
+      });
+
+      // Update local state
+      setNotices((prevNotices) =>
+        prevNotices.filter((notice) => notice._id !== id)
+      );
+
     } catch (err) {
       console.error(err);
-      alert('Failed to delete notice.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Delete Failed!',
+        text: 'Something went wrong while deleting the notice.',
+      });
     }
-  };
+  }
+};
+
 
   const handleEditChange = (e) => {
     const { name, value } = e.target;
@@ -42,11 +75,13 @@ const TeacherNoticeShow = () => {
       const updated = notices.map(notice =>
         notice._id === editingNotice._id ? res.data : notice
       );
-      setNotices(updated);
-      setEditingNotice(null);
+      toast.success("notice updated successfully");
+      setTimeout(() => {
+        setNotices(updated);
+        setEditingNotice(null);
+      }, 1000); // 1 second delay so toast shows
     } catch (err) {
-      console.error(err);
-      alert('Update failed.');
+      toast.error('Update failed.');
     }
   };
 
@@ -156,6 +191,7 @@ const TeacherNoticeShow = () => {
           </div>
         </form>
       </div>
+      <Toaster position='top-right'/>
     </div>
   )}
 </div>

@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { ScrollText } from 'lucide-react';
+import toast, { Toaster } from 'react-hot-toast';
 
 const AddNotice = () => {
   const [title, setTitle] = useState('');
@@ -13,7 +14,7 @@ const AddNotice = () => {
     e.preventDefault();
 
     if (!title || !date || !postedBy || !file) {
-      alert("All fields are required!");
+      toast.error("All fields are required!");
       return;
     }
 
@@ -25,7 +26,7 @@ const AddNotice = () => {
 
     try {
       const res = await axios.post('http://localhost:5000/notices/add', formData);
-      alert('Notice added!');
+      toast.success('Notice added successfully !');
       setTitle('');
       setDate('');
       setPostedBy('');
@@ -33,7 +34,7 @@ const AddNotice = () => {
       fileInputRef.current.value = null;
     } catch (err) {
       console.error(err);
-      alert('Failed to add notice');
+      toast.error('Failed to add notice. please try again ! ');
     }
   };
 
@@ -55,7 +56,7 @@ const AddNotice = () => {
         className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        required
+     
       />
     </div>
 
@@ -67,7 +68,7 @@ const AddNotice = () => {
         className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         value={date}
         onChange={(e) => setDate(e.target.value)}
-        required
+ 
       />
     </div>
 
@@ -80,7 +81,7 @@ const AddNotice = () => {
         className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         value={postedBy}
         onChange={(e) => setPostedBy(e.target.value)}
-        required
+    
       />
     </div>
 
@@ -105,6 +106,7 @@ const AddNotice = () => {
       </button>
     </div>
   </form>
+  <Toaster position='top-right'></Toaster>
 </div>
 
   );

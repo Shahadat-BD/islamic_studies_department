@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../context/AuthProvider';
 import { useNavigate } from 'react-router-dom';
-
+import toast, { Toaster } from 'react-hot-toast';
 const AddAcademicInfo = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate()
@@ -29,11 +29,9 @@ const AddAcademicInfo = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('submitted form data' , formData);
-    
     try {
       const res = await axios.post('http://localhost:5000/academic-info', formData);
-      alert("✅ Academic info saved successfully!");
+      toast.success("Academic info saved successfully!");
       navigate('/dashboard/my-academic-info')
       // Reset form (email kept)
       setFormData({
@@ -47,11 +45,11 @@ const AddAcademicInfo = () => {
       });
     } catch (err) {
     if (err.response && err.response.status === 409) {
-      alert('You have already submitted your information.');
+      toast.error('You have already submitted your information!');
       
     } else {
       console.error(err);
-      alert('Something went wrong. Please try again.');
+      toast.error('Something went wrong. Please try again.');
     }
   }
   };
@@ -147,6 +145,8 @@ const AddAcademicInfo = () => {
           Submit
         </button>
       </form>
+
+      <Toaster position="top-right" />
     </div>
   );
 };

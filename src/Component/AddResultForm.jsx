@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { ClipboardList } from 'lucide-react';
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function AddResultForm() {
   const [formData, setFormData] = useState({
@@ -56,10 +57,10 @@ export default function AddResultForm() {
     e.preventDefault();
     try {
       const res = await axios.post('http://localhost:5000/api/results/add-result', formData);
-      alert(res.data.message);
+      toast.success('Result added Successfully!');
     } catch (err) {
       console.error(err.response?.data || err.message);
-      alert('Failed to submit result.');
+      toast.error('Failed to submit result! ');
     }
   };
 // max-w-2xl mx-auto font-english bg-white shadow-md p-8 mt-8 rounded-xl
@@ -231,6 +232,7 @@ export default function AddResultForm() {
         </button>
       </div>
     </form>
+    <Toaster position='top-right'></Toaster>
      </div>
 
   

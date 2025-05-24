@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
+import toast, { Toaster } from 'react-hot-toast';
 
 const EditTeacher = () => {
   const {user} = useContext(AuthContext)
@@ -33,9 +34,14 @@ const EditTeacher = () => {
     e.preventDefault();
     try {
       await axios.put(`http://localhost:5000/api/teachers/${id}`, formData);
-      navigate('/dashboard/teachers');
+      toast.success('teacher info updated successfully!');
+       // Navigate after short delay
+    setTimeout(() => {
+      navigate('/dashboard/teachers');;
+    }, 1500); // 1.5 second delay
+
     } catch (err) {
-      console.error(err);
+       toast.error("something is wrong.teacher info not updated")
     }
   };
 
@@ -60,6 +66,7 @@ const EditTeacher = () => {
           Update
         </button>
       </form>
+      <Toaster position='top-right'/>
     </div>
   );
 };

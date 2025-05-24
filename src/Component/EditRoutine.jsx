@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
 
 const EditRoutine = () => {
   const { id } = useParams();
@@ -27,11 +28,15 @@ const EditRoutine = () => {
     e.preventDefault();
     try {
       await axios.put(`http://localhost:5000/api/routines/${id}`, formData);
-      alert('Routine updated!');
+      toast.success('Routine updated successfully!');
+      
+       // Navigate after short delay
+    setTimeout(() => {
       navigate('/dashboard/routines');
+    }, 1500); // 1.5 second delay
+
     } catch (err) {
-      alert('Update failed!');
-      console.error(err);
+      toast.error('Update failed!');
     }
   };
 
@@ -144,6 +149,7 @@ const EditRoutine = () => {
           </button>
         </div>
       </form>
+      <Toaster position='top-right'/>
     </div>
   );
 };

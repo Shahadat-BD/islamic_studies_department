@@ -2,11 +2,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../context/AuthProvider';
 import { BookOpenCheck } from 'lucide-react';
+import toast, { Toaster } from 'react-hot-toast';
+import Swal from 'sweetalert2';
 
 const MyAcademicInfo = () => {
   const { user } = useContext(AuthContext);
   console.log('all user details', user);
-
   const [myInfo, setMyInfo] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [formData, setFormData] = useState({});
@@ -35,26 +36,54 @@ const MyAcademicInfo = () => {
   const handleUpdate = async () => {
     try {
       await axios.put(`http://localhost:5000/academic-info/${myInfo._id}`, formData);
-      alert("Academic info updated successfully!");
+      toast.success("Academic info updated successfully!");
       setEditMode(false);
     } catch (err) {
       console.error(err);
-      alert("Update failed");
+      toast.error("Update failed");
     }
   };
 
-  const handleDelete = async () => {
-    const confirm = window.confirm("Are you sure you want to delete?");
-    if (!confirm) return;
+
+const handleDelete = async () => {
+  const result = await Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to delete this information!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
+    confirmButtonText: 'Yes, delete it!'
+  });
+
+  if (result.isConfirmed) {
     try {
       await axios.delete(`http://localhost:5000/academic-info/${myInfo._id}`);
-      alert("Deleted successfully");
+      
+      // Show success alert
+      await Swal.fire({
+        title: 'Deleted!',
+        text: 'Your academic info has been deleted.',
+        icon: 'success',
+        timer: 1500,
+        showConfirmButton: false
+      });
+
+      // Update state
       setMyInfo(null);
+
     } catch (err) {
       console.error(err);
-      alert("Delete failed");
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Delete Failed!',
+        text: 'Something went wrong while deleting.',
+      });
     }
-  };
+  }
+};
+
 
   if (!myInfo) {
     return <p className="text-center text-gray-600 mt-10">No academic info found</p>;
@@ -111,7 +140,7 @@ const MyAcademicInfo = () => {
         )}
 
       </div>
-
+      <Toaster position='top-right'/>
     </div>
   );
 };
