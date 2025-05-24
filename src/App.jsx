@@ -9,7 +9,7 @@ import PrivateRoute from "./Component/PrivateRoute";
 // Dashboard Layout and Pages
 import DashboardLayout from "./Layout/DashboardLayout";
 import AddTeacher from "./Component/AddTeacher";
-import TeacherList from "./Component/teacherList";
+import TeacherList from "./Component/TeacherList";
 import EditTeacher from "./Component/EditTeacher";
 import RoutineList from "./pages/RoutineList";
 import AddRoutine from "./Component/AddRoutine";
