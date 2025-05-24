@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { NavLink } from "react-router-dom";
 
 const RecentNotices = () => {
   const [notices, setNotices] = useState([]);
@@ -87,12 +88,9 @@ const RecentNotices = () => {
 
         {/* View All Button */}
          <div className="mt-8 text-center" data-aos="fade-up">
-        <a
-          href="/show-notice"
-          className="inline-block px-6 py-3 bg-blue-900 text-white rounded-full shadow hover:bg-blue-800 transition"
-        >
-           📢 সকল নোটিশ দেখুন
-        </a>
+        <NavLink to={'/show-notice'} 
+        className={'inline-block px-6 py-3 bg-blue-900 text-white rounded-full shadow hover:bg-blue-800 transition'}
+        >📢 সকল নোটিশ দেখুন</NavLink>
       </div>
 
       </div>

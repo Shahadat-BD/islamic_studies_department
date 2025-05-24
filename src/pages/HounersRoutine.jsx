@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { NavLink } from 'react-router-dom';
 
 const HonoursRoutine = () => {
   const [routines, setRoutines] = useState([]);
@@ -90,12 +91,11 @@ const HonoursRoutine = () => {
       )}
 
       <div className="mt-10 text-center">
-        <a
-          href="/all-routine-list"
-          className="inline-block px-6 py-3 bg-blue-900 text-white rounded-full shadow hover:bg-blue-800 transition"
-        >
-          📚 সকল ইয়ারের রুটিন দেখুন
-        </a>
+
+        <NavLink to={'/all-routine-list'} 
+        className={'inline-block px-6 py-3 bg-blue-900 text-white rounded-full shadow hover:bg-blue-800 transition'}
+        >📚 সকল ইয়ারের রুটিন দেখুন</NavLink>
+
       </div>
     </div>
   );
