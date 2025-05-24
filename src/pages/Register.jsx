@@ -41,7 +41,7 @@ const Register = () => {
         role: "student"
       };
 
-      await fetch("${import.meta.env.VITE_API_URL}/users", {
+      await fetch(`${import.meta.env.VITE_API_URL}/users`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(saveUser)

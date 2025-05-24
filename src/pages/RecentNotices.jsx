@@ -13,7 +13,7 @@ const RecentNotices = () => {
 
   useEffect(() => {
     axios
-      .get("${import.meta.env.VITE_API_URL}/notices")
+      .get(`${import.meta.env.VITE_API_URL}/notices`)
       .then((res) => {
         setNotices(res.data);
         setLoading(false);

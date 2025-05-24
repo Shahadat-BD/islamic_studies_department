@@ -16,7 +16,7 @@ const AllUserInfo = () => {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get("${import.meta.env.VITE_API_URL}/users");
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/users`);
       setUsers(res.data);
       console.log(res.data);
 
