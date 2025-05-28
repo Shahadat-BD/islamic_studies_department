@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 const slides = [
   {
@@ -62,18 +63,18 @@ const HeroBanner = () => {
                 {slide.subtitle}
               </p>
               <div className="flex flex-wrap justify-center gap-4 mt-2">
-                <a
-                  href="/all-routine-list"
+                <NavLink
+                  to={'/all-routine-list'}
                   className="bg-white text-blue-900 font-semibold px-6 py-2 rounded-full hover:bg-gray-200 transition-all duration-300 shadow-md"
                 >
                   📅 View Routine
-                </a>
-                <a
-                  href="/all-teacher-list"
+                </NavLink>
+                <NavLink
+                  to={'/all-teacher-list'}
                   className="bg-transparent border border-white font-semibold px-6 py-2 rounded-full hover:bg-white hover:text-blue-900 transition-all duration-300 shadow-md"
                 >
                   👨‍🏫 Explore Teachers
-                </a>
+                </NavLink>
               </div>
             </div>
           </div>
