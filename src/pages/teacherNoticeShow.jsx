@@ -1,9 +1,14 @@
 // TeacherNoticeShow.jsx
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
  import Swal from 'sweetalert2';
 import toast, { Toaster } from 'react-hot-toast';
+import { AuthContext } from '../context/AuthProvider';
+
+
 const TeacherNoticeShow = () => {
+  
+  const {getToken} = useContext(AuthContext)
   const [notices, setNotices] = useState([]);
   const [editingNotice, setEditingNotice] = useState(null);
 
@@ -35,7 +40,13 @@ const handleDelete = async (id) => {
 
   if (result.isConfirmed) {
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/notices/${id}`);
+      const token = await getToken()
+      await axios.delete(`${import.meta.env.VITE_API_URL}/notices/${id}`,
+        {
+           headers : {
+               Authorization: `Bearer ${token}`,
+           }
+        });
       
       // Show success alert
       await Swal.fire({
@@ -71,7 +82,16 @@ const handleDelete = async (id) => {
   const handleEditSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.put(`${import.meta.env.VITE_API_URL}/notices/${editingNotice._id}`, editingNotice);
+      const token = await getToken()
+      const res = await axios.put(`${import.meta.env.VITE_API_URL}/notices/${editingNotice._id}`, 
+        editingNotice , 
+        {
+          headers : {
+               Authorization: `Bearer ${token}`, // ✅ Token attach করা হলো
+              'Content-Type': 'application/json'
+          }
+        }
+      );
       const updated = notices.map(notice =>
         notice._id === editingNotice._id ? res.data : notice
       );

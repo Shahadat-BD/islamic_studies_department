@@ -4,7 +4,7 @@ import { AuthContext } from '../context/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 const AddAcademicInfo = () => {
-  const { user } = useContext(AuthContext);
+  const { user , getToken } = useContext(AuthContext);
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     name: '',
@@ -30,7 +30,16 @@ const AddAcademicInfo = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${import.meta.env.VITE_API_URL}/academic-info`, formData);
+      const token = await getToken()
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/academic-info`,
+      formData, 
+      {
+        headers : {
+            Authorization: `Bearer ${token}`, // ✅ Token attach করা হলো
+            'Content-Type': 'application/json'
+        }
+      }
+    );
       toast.success("Academic info saved successfully!");
       navigate('/dashboard/my-academic-info')
       // Reset form (email kept)

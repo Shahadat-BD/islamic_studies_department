@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { User } from "lucide-react";
+import { AuthContext } from "../context/AuthProvider";
 
 const AllUserInfo = () => {
   const [users, setUsers] = useState([]);
+  const {getToken} = useContext(AuthContext)
   const [updatingId, setUpdatingId] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
@@ -41,7 +43,19 @@ const AllUserInfo = () => {
   const handleRoleChange = async (userId, newRole) => {
     try {
       setUpdatingId(userId); // Optional: for showing loading spinner
-      await axios.put(`${import.meta.env.VITE_API_URL}/users/${userId}/role`, { role: newRole });
+    
+      const token = await getToken();
+      await axios.put(`${import.meta.env.VITE_API_URL}/users/${userId}/role`, { 
+        role: newRole,
+      },
+      {
+        headers : {
+           Authorization: `Bearer ${token}`, // ✅ Token attach করা হলো
+          'Content-Type': 'application/json'
+        }
+      }
+    
+    );
       await fetchUsers(); // refresh user list after update
     } catch (error) {
       console.error("Failed to update role", error);

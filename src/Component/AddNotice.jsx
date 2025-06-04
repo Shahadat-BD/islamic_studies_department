@@ -1,9 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import axios from 'axios';
 import { ScrollText } from 'lucide-react';
 import toast, { Toaster } from 'react-hot-toast';
+import { AuthContext } from '../context/AuthProvider';
 
 const AddNotice = () => {
+  const {getToken} = useContext(AuthContext)
+
   const [title, setTitle] = useState('');
   const [date, setDate] = useState('');
   const [postedBy, setPostedBy] = useState('');
@@ -25,7 +28,14 @@ const AddNotice = () => {
     formData.append('file', file);
 
     try {
-      const res = await axios.post(`${import.meta.env.VITE_API_URL}/notices/add`, formData);
+      const token = await getToken() ;
+       await axios.post(`${import.meta.env.VITE_API_URL}/notices/add`,
+      formData, 
+        {
+          headers : {
+              Authorization: `Bearer ${token}`, 
+          }
+        });
       toast.success('Notice added successfully !');
       setTitle('');
       setDate('');
@@ -56,7 +66,7 @@ const AddNotice = () => {
         className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-     
+   
       />
     </div>
 

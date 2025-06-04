@@ -6,12 +6,13 @@ import toast, { Toaster } from 'react-hot-toast';
 import Swal from 'sweetalert2';
 
 const MyAcademicInfo = () => {
-  const { user } = useContext(AuthContext);
+  const { user , getToken } = useContext(AuthContext);
   console.log('all user details', user);
   const [myInfo, setMyInfo] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [formData, setFormData] = useState({});
-
+ console.log(getToken);
+ 
   useEffect(() => {
     const fetchMyInfo = async () => {
       try {
@@ -35,7 +36,16 @@ const MyAcademicInfo = () => {
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`${import.meta.env.VITE_API_URL}/academic-info/${myInfo._id}`, formData);
+      const token = await getToken()
+      await axios.put(`${import.meta.env.VITE_API_URL}/academic-info/${myInfo._id}`,
+      formData , 
+      {
+        headers : {
+              Authorization: `Bearer ${token}`, // ✅ Token attach করা হলো
+             'Content-Type': 'application/json'
+        }
+      }
+    );
       toast.success("Academic info updated successfully!");
       setEditMode(false);
     } catch (err) {
@@ -58,7 +68,13 @@ const handleDelete = async () => {
 
   if (result.isConfirmed) {
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/academic-info/${myInfo._id}`);
+      const token = await getToken()
+      await axios.delete(`${import.meta.env.VITE_API_URL}/academic-info/${myInfo._id}`,
+        {
+          headers : {
+             Authorization: `Bearer ${token}`,
+          }
+        });
       
       // Show success alert
       await Swal.fire({

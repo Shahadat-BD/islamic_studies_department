@@ -18,6 +18,21 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+
+  // token
+ const getToken = async () => {
+  const user = auth.currentUser;
+  console.log("user information", user);
+  
+  if (user) {
+    const token = await user.getIdToken();
+    console.log("✅ ID Token:", token); // 👈 এটা দেখাবে token
+    return token;
+  }
+  return null;
+};
+
+
   // Register
   const register = (email, password) => {
     setLoading(true);
@@ -81,6 +96,7 @@ const AuthProvider = ({ children }) => {
     register,
     login,
     logout,
+    getToken,
   };
 
   return (

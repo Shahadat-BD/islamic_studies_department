@@ -6,7 +6,7 @@ import { AuthContext } from '../context/AuthProvider';
 import toast, { Toaster } from 'react-hot-toast';
 
 const EditTeacher = () => {
-  const {user} = useContext(AuthContext)
+  const {getToken} = useContext(AuthContext)
   const [formData, setFormData] = useState({
     name: '',
     designation: '',
@@ -33,7 +33,16 @@ const EditTeacher = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`${import.meta.env.VITE_API_URL}/api/teachers/${id}`, formData);
+      const token = await getToken()
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/teachers/${id}`, 
+        formData,
+        {
+          headers : {
+           Authorization: `Bearer ${token}`, // ✅ Token attach করা হলো
+          'Content-Type': 'application/json'
+          }
+        }
+      );
       toast.success('teacher info updated successfully!');
        // Navigate after short delay
     setTimeout(() => {

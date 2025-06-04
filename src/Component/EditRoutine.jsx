@@ -1,12 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
+import { AuthContext } from '../context/AuthProvider';
 
 const EditRoutine = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [formData, setFormData] = useState(null);
+  const {getToken} = useContext(AuthContext)
 
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_API_URL}/api/routines/${id}`)
@@ -27,7 +29,14 @@ const EditRoutine = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`${import.meta.env.VITE_API_URL}/api/routines/${id}`, formData);
+      const token = await getToken()
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/routines/${id}`, 
+        formData,{
+          headers :{
+              Authorization: `Bearer ${token}`, // ✅ Token attach করা হলো
+             'Content-Type': 'application/json'
+          }
+        });
       toast.success('Routine updated successfully!');
       
        // Navigate after short delay

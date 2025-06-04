@@ -1,15 +1,16 @@
-import {  useEffect, useState } from 'react';
+import {  useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { CalendarDays } from 'lucide-react';
+import { AuthContext } from '../context/AuthProvider';
 
 const RoutineList = () => {
+  const {getToken}  = useContext(AuthContext)
   const [routines, setRoutines] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [selectedYear, setSelectedYear] = useState('Honours 1st Year'); // ✅ Default value
   const [dayFilter, setDayFilter] = useState("Sunday"); // default value
-   
-
+  
 
 
   const years = [
@@ -42,7 +43,14 @@ const RoutineList = () => {
 
   const handleDeleteRoutine = async (id) => {
     if (confirm('Are you sure?')) {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/api/routines/${id}`);
+      const token = await getToken()
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/routines/${id}`,
+        {
+          headers : {
+             Authorization: `Bearer ${token}`,
+          }
+        }
+      );
        fetchAllRoutines();
     }
   };

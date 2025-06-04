@@ -6,8 +6,8 @@ import { UserPlus } from 'lucide-react';
 import toast, { Toaster } from 'react-hot-toast';
 
 const AddTeacher = () => {
-  const { user } = useContext(AuthContext);
-
+  const { user , getToken } = useContext(AuthContext);
+  
   const [formData, setFormData] = useState({
     name: '',
     designation: '',
@@ -36,8 +36,19 @@ const AddTeacher = () => {
 
 const handleSubmit = async (e) => {
   e.preventDefault();
-  try {
-    await axios.post(`${import.meta.env.VITE_API_URL}/api/teachers`, formData);
+  try { 
+
+    const token = await getToken(); // getting token
+   
+    await axios.post(`${import.meta.env.VITE_API_URL}/api/teachers`, 
+      formData,
+      {
+        headers: {
+           Authorization: `Bearer ${token}`, // ✅ Token attach করা হলো
+          'Content-Type': 'application/json'
+        }
+      }
+     );
     toast.success('teacher information added successfully !')
     navigate('/dashboard/teachers');
   } catch (err) {

@@ -5,7 +5,7 @@ import { toast } from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
-  const { register, user } = useContext(AuthContext);
+  const { register, user , getToken} = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -40,10 +40,15 @@ const Register = () => {
         image,
         role: "student"
       };
-
+       
+      const token = await getToken();
       await fetch(`${import.meta.env.VITE_API_URL}/users`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {  
+           Authorization: `Bearer ${token}`, // ✅ Token attach করা হলো
+          "Content-Type": "application/json" 
+        
+        },
         body: JSON.stringify(saveUser)
       });
 

@@ -2,9 +2,11 @@ import { useContext, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';import { CalendarPlus } from 'lucide-react';
 import toast, { Toaster } from 'react-hot-toast';
+import { AuthContext } from '../context/AuthProvider';
 ;
 
 const AddRoutine = () => {
+  const {getToken} = useContext(AuthContext)
   const [formData, setFormData] = useState({
     department: '',
     year: '',
@@ -37,7 +39,14 @@ const AddRoutine = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/api/routines`, formData);
+      const token =  await getToken()
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/routines`, 
+        formData,{
+          headers : {
+             Authorization: `Bearer ${token}`, // ✅ Token attach করা হলো
+            'Content-Type': 'application/json'
+          }
+        });
       setFormData({
         department: '',
         year: '',

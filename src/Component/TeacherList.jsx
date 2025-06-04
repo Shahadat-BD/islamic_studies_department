@@ -6,8 +6,7 @@ import { Users } from 'lucide-react';
 
 const TeacherList = () => {
   const [teachers, setTeachers] = useState([]);
-  const { user } = useContext(AuthContext);
-  console.log(user.email);
+  const { user , getToken } = useContext(AuthContext);
   
   const fetchTeachers = async () => {
     if (!user) return;
@@ -29,7 +28,14 @@ const TeacherList = () => {
 
   const handleDelete = async (id) => {
     if (confirm('Are you sure?')) {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/api/teachers/${id}`);
+      const token = await getToken()
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/teachers/${id}`,
+        {
+          headers :{
+                   Authorization: `Bearer ${token}`
+          }
+        }
+      );
       fetchTeachers();
     }
   };
