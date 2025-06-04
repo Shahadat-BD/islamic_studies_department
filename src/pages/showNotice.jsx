@@ -66,10 +66,11 @@ const sortedNotices = [...notices].sort((a, b) => {
                   <td className="py-3 px-4 border">{notice.date}</td>
                   <td className="py-3 px-4 border">{notice.title}</td>
                   <td className="py-3 px-4 border">
+                  
                     <a
-                      href={`${import.meta.env.VITE_API_URL}${notice.fileUrl}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                       href={notice.fileUrl} 
+                       target="_blank" 
+                       rel="noopener noreferrer"
                       className="text-white bg-green-600 hover:bg-green-700 px-3 py-1 rounded"
                     >
                       ডাউনলোড
